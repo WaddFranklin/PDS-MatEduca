@@ -1,0 +1,21 @@
+body{
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+#navbar{
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 5px 0;
+}
+#navbar a.nav-link{
+    color: #000;
+}
+#navbar a.navbar-brand{
+    font-weight: bold;
+    color: #000;
+}
