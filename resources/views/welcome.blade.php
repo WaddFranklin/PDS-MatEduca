@@ -4,5 +4,5 @@
 
 @section('content')
 
-    <h1>Página Inicial</h1>
+    <h3 class= "index-h3">Página Inicial</h3>
 @endsection
