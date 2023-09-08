@@ -10,7 +10,5 @@
     <div id="search-container" class="col-md-12">
 
         <input type="text" id="search-input" class="form-control" placeholder="Pesquisar professores ou assunto...">
-
-        <span><img id= "search-icon" src="/img/search-icon-svg-28.jpg" alt="search symbol"></span>
     </div>
 @endsection

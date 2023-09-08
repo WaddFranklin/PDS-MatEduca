@@ -1,8 +1,8 @@
 #title-container{
-    margin: 45px auto;
-    max-width: 540px;
+    margin: 45px 675px;
+    max-width: 440px;
     padding-top: 20px;
-    word-spacing: 3px;
+    word-spacing: 2px;
 }
 #title-container h3{
     font-weight:900;
@@ -11,27 +11,25 @@
     font-size: 2em;
 }
 #search-container{
-    max-width: 1040px;
+    max-width: 1000px;
     margin: 0px auto;
 
-}
-#search-icon{
-
-    width: 50px;
-    background: transparent;
-    border: none;
 }
 #search-input{
     padding: 12px;
     width: 90%;
-    background-color: #efefef;
+    background-color: #faf6f6;
     transform: 250ms ease-in-out;
     font-size: 20px;
     line-height: 18px;
-    height: 6.5vh;
+    height: 7vh;
     float: left;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    background-position: 97% center;
 }
 #search-input::placeholder{
 
-    color: color(#5e5e5e,a(0.8));
+    color: color(#faf6f6,a(0.5));
 }
