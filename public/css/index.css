@@ -1,4 +1,37 @@
-.index-h3{
+#title-container{
+    margin: 45px auto;
+    max-width: 540px;
+    padding-top: 20px;
+    word-spacing: 3px;
+}
+#title-container h3{
+    font-weight:900;
+    margin: 3px;
+    text-align: center;
+    font-size: 2em;
+}
+#search-container{
+    max-width: 1040px;
+    margin: 0px auto;
 
-    padding: 60px;
+}
+#search-icon{
+
+    width: 50px;
+    background: transparent;
+    border: none;
+}
+#search-input{
+    padding: 12px;
+    width: 90%;
+    background-color: #efefef;
+    transform: 250ms ease-in-out;
+    font-size: 20px;
+    line-height: 18px;
+    height: 6.5vh;
+    float: left;
+}
+#search-input::placeholder{
+
+    color: color(#5e5e5e,a(0.8));
 }

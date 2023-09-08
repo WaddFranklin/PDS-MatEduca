@@ -29,6 +29,9 @@ header{
     font-size: 1.5em;
     padding-left: 30px;
 }
+#navbar #professor{
+    font-weight: bolder;
+}
 .vertical-divider{
     width: 1px;
     height: 30px;

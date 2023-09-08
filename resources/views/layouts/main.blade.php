@@ -32,7 +32,7 @@
                         <ul class="navbar-nav">
 
                             <li class="nav-item">
-                                <a href="/" class="nav-link">Professores</a>
+                                <a href="/" id="professor" class="nav-link">Professores</a>
                             </li>
 
                             <li class="nav-item">
