@@ -33,3 +33,14 @@
 
     color: color(#faf6f6,a(0.5));
 }
+#search-container{
+
+    text-align: center;
+    display: block;
+}
+.filter-container{
+    display: block;
+    width: 20em;
+    margin: auto;
+    padding: 15px 0px;
+}
