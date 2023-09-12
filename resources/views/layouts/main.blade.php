@@ -17,8 +17,9 @@
         <link href="/css/footer_style.css" rel="stylesheet">
         <link href="/css/index.css" rel="stylesheet">
 
+        <!-- Js -->
+        <script src="/js/script.js"></script>
 
-        <script src="/js/scripts.js"></script>
     </head>
     <body>
         <header>
@@ -36,15 +37,15 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/" class="nav-link">Como Funciona</a>
+                                <a href="#" class="nav-link">Como Funciona</a>
                             </li>
                             <div class="vertical-divider"></div>
                             <li class="nav-item">
-                                <a href="/" class="nav-link">Entrar</a>
+                                <a href="#" class="nav-link">Entrar</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="/" class="nav-link">Cadastrar-se</a>
+                                <a href="#" class="nav-link">Cadastrar-se</a>
                             </li>
                         </ul>
                     </div>

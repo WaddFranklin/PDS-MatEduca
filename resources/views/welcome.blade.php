@@ -9,12 +9,13 @@
     </div>
     <div id="search-container" class="col-md-12">
 
-        <input type="text" id="search-input" class="form-control" placeholder="Pesquisar professores ou assunto...">
-
-        <div class="filter-container">
-            <label for="Filtro">Filtrar por </label>
-            <button class="assunto">Assunto</button>
-            <button class="Professor">Professor</button>
-        </div>
+        <form action="" id="search-form">
+            <input name = "search" type="text" class="form-control" id ="search-input" placeholder="Pesquisar professores ou assunto...">
+            <div class="filter-container">
+                <label for="Filtro">Filtrar por </label>
+                <button type = "submit" class="filter-buttons" id = "Assunto">Assunto</button>
+                <button type = "submit" class="filter-buttons" >Disponibilidade</button>
+            </div>
+        </form>
     </div>
 @endsection
