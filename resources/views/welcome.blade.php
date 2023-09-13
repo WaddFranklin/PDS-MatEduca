@@ -21,53 +21,94 @@
             </div>
         </form>
     </div>
+</div>
 
-        <div id="professors-container" class="col-md-12">
-
-            <div id="cards-container" class="row">
-
-                    <div class="card col-md-3">
-                        <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
-                        <div class="card-body">
-                            <h5 class="card-title">Carlos Silveira</h5>
-                            <p class="card-text">Um exemplo qualquer</p>
-                        </div>
-                    </div>
-
-                    <div class="card col-md-3">
-                        <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
-                        <div class="card-body">
-                            <h5 class="card-title">Juliana Ribeiro</h5>
-                            <p class="card-text">Um exemplo qualquer</p>
-                        </div>
-                    </div>
-
-                    <div class="card col-md-3">
-                        <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
-                        <div class="card-body">
-                            <h5 class="card-title">Carlos Silveira</h5>
-                            <p class="card-text">Um exemplo qualquer</p>
-                        </div>
-                    </div>
-
-                    <div class="card col-md-3">
-                        <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
-                        <div class="card-body">
-                            <h5 class="card-title">Juliana Ribeiro</h5>
-                            <p class="card-text">Um exemplo qualquer</p>
-                        </div>
-                    </div>
-
-                    <div class="card col-md-3">
-                        <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
-                        <div class="card-body">
-                            <h5 class="card-title">Juliana Ribeiro</h5>
-                            <p class="card-text">Um exemplo qualquer</p>
-                        </div>
-                    </div>
-
-
+<div id="professors-container" class="col-md-15">
+    <div id="cards-container" class="row">
+        <div class="tutor__cards card col-md-3">
+            <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
+            <div class="card-body">
+                <h5 class="card-title">Carlos Silveira</h5>
+                <p class="card-text">Um exemplo qualquer</p>
+                <p class="card-text star-icon">&#9733;<span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                     5.0 (23)
+                </p>
             </div>
         </div>
+        <div class="tutor__cards card col-md-3">
+            <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
+            <div class="card-body">
+                <h5 class="card-title">Carlos Silveira</h5>
+                <p class="card-text">Um exemplo qualquer</p>
+                <p class="card-text star-icon">&#9733;<span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                     5.0 (23)
+                </p>
+            </div>
+        </div>
+        <div class="tutor__cards card col-md-3">
+            <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
+            <div class="card-body">
+                <h5 class="card-title">Carlos Silveira</h5>
+                <p class="card-text">Um exemplo qualquer</p>
+                <p class="card-text star-icon">&#9733;<span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                     5.0 (23)
+                </p>
+            </div>
+        </div>
+        <div class="tutor__cards card col-md-3">
+            <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
+            <div class="card-body">
+                <h5 class="card-title">Carlos Silveira</h5>
+                <p class="card-text">Um exemplo qualquer</p>
+                <p class="card-text star-icon">&#9733;<span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                     5.0 (23)
+                </p>
+            </div>
+        </div>
+     </div>
 </div>
 @endsection

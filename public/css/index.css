@@ -1,3 +1,5 @@
+
+/*Estilização da barra de pesquisa*/
 #title-container{
     margin: 45px auto;
     max-width: 440px;
@@ -17,7 +19,7 @@
 }
 #search-input{
     padding: 12px;
-    width: 100%;
+    width: 1016px;
     background-color: rgba(239, 234,234, 0.4);
     font-size: 20px;
     line-height: 18px;
@@ -27,6 +29,7 @@
     background-repeat: no-repeat;
     background-size: 36px 36px;
     background-position: 97% center;
+    gap: 8px;
 }
 #search-input::placeholder{
 
@@ -60,3 +63,22 @@
 #Assunto{
     width: 9%;
 }
+#professor-container{
+    align-items: center;
+}
+#cards-container{
+    width: 1300px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+}
+
+.tutor__cards {
+    border-radius: 4px;
+    height: 486px;
+    padding: 5px;
+    margin: 7px 5px;
+}
+
