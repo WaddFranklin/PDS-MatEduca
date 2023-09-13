@@ -18,7 +18,6 @@
         <link href="/css/index.css" rel="stylesheet">
 
         <!-- Js -->
-        <script src="/js/script.js"></script>
 
     </head>
     <body>
@@ -37,15 +36,15 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Como Funciona</a>
+                                <a href="/help" class="nav-link">Como Funciona</a>
                             </li>
                             <div class="vertical-divider"></div>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Entrar</a>
+                                <a href="/login" class="nav-link">Entrar</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Cadastrar-se</a>
+                                <a href="/cadastro" class="nav-link">Cadastrar-se</a>
                             </li>
                         </ul>
                     </div>
@@ -66,12 +65,14 @@
         </div>
 
       </div>
-      <hr />
-      <div class="rodape-down">
-        <p>Todos os direitos reservados &copy;</p>
-        <p>2023</p>
-      </div>
-      </footer>
-      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+        <hr />
+        <div class="rodape-down">
+            <p>Todos os direitos reservados &copy;</p>
+            <p>2023</p>
+        </div>
+    </footer>
+            <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+            <script src= 'js/script.js'></script>
     </body>
 </html>

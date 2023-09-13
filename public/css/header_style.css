@@ -1,7 +1,7 @@
 body{
-    min-height: 100vh;
-    padding-bottom: 100px;
-    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 header{
     background-color: #fff;
@@ -23,8 +23,8 @@ header{
 #navbar a.nav-link{
     color: rgba(0, 0, 0, 0.75);
 }
-a.nav-link .active{
-    color: #000;
+a.nav-link.active{
+    color: rgba(0, 0, 0, 1);
     font-weight: bolder;
 }
 #navbar a.navbar-brand{

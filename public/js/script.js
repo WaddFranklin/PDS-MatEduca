@@ -9,9 +9,6 @@ function activePage(){
         console.log(`${navLinkPathname} é o mesmo que ${windowsPathname}?`);
 
         if(windowsPathname === navLinkPathname || (windowsPathname === '/welcome.blade.php' && navLinkPathname === '/'))navlink.classList.add('active');
-        else{
-            if(navlink.classList.contains('active'))navlink.classList.remove('active');
-        }
     })
 
 }
