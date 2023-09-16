@@ -16,7 +16,7 @@
         <!-- CSS da aplicação -->
         <link href="/css/teste_css/header_test.css" rel="stylesheet">
         <link href="/css/footer_style.css" rel="stylesheet">
-        <link href="/css/index.css" rel="stylesheet">
+        <link href="/css//teste_css/index_test.css" rel="stylesheet">
 
         <!-- Js -->
         <script src = 'js/script.js'></script>
@@ -37,7 +37,7 @@
                         <li class="navs-items">
                             <a href="/login" class="nav-link">Entrar</a>
                         </li>
-                        <li class="navs-items"><a href="/cadastro" class="nav-link">Cadastrar-se</a></li>
+                        <li class="navs-items"><a href="/cadastro" id = "cadastro" class="nav-link">Cadastrar-se</a></li>
                     </ul>
                 </navbar>
             </div>
@@ -51,7 +51,7 @@
 
         <div class = "rodape-up-right">
 
-        <a  class = "delimiter" href="/">Professores</a>
+        <a href="/">Professores</a>
         <a href="/">Política de privacidade</a>
         </div>
 

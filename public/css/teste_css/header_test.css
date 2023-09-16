@@ -1,6 +1,7 @@
-*{
+body{
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 .container-header{
     display: flex;
@@ -8,12 +9,12 @@
     padding: 15px 35px;
     justify-content: space-between;
     gap: 537px;
-    height: 347px;
+    height: 100px;
     background: var(--primary-50, #F2F6FB);
 }
 #navbar{
     display: flex;
-    width: 95%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
@@ -23,7 +24,7 @@
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 12px;
 }
 .nav-link{
     text-decoration: none;
@@ -44,7 +45,7 @@
     font-weight: 700;
     line-height: normal;
     text-decoration: none;
-    padding: 0px 0px;
+    padding-left: 70px;
 }
 .vertical-divider{
     width: 1px;
