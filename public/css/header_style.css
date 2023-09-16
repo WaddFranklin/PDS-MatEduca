@@ -25,7 +25,7 @@ header{
 }
 a.nav-link.active{
     color: rgba(0, 0, 0, 1);
-    font-weight: bolder;
+    font-weight: 900;
 }
 #navbar a.navbar-brand{
     font-weight: bold;

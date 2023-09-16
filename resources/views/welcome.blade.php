@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div id="professors-container" class="col-md-15">
+<div id="professors-container" class="col-md-12">
     <div id="cards-container" class="row">
         <div class="tutor__cards card col-md-3">
             <img  class ="card-img-top" src="/img/cardBackground.jpeg" alt="imagem de fundo">
