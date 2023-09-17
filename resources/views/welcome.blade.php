@@ -1,4 +1,4 @@
-@extends('layouts.main_teste')
+@extends('layouts.main')
 
 @section('title','MatEduca')
 
@@ -24,6 +24,45 @@
 </div>
 
 <section class="cards-professores">
+    <div class="card-professor">
+        <div class="imagem-professor">
+        <!--img src="img/JulianaRibeiro.jpeg" alt="Imagem do professor"-->
+        </div>
+        <div class="infopart">
+            <div class="informacao-professor">
+                <h2 class="card_description nome-professor">Carlos Silveira</h2>
+                <p class="card-text star-icon">
+                    &#9733;
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    <span>
+                    &#9733;
+                    </span>
+                    5.0 (23)
+                </p>
+            </div>
+            <div class="informacoes-experience">
+                <div class="experience">
+                    <label for="">Experiência</label>
+                    <p>5 anos</p>
+                </div>
+
+                <ul>
+                    <li>Álgebra</li>
+                    <li>Geometria</li>
+                    <li>Equação do 2º grau</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="card-professor">
         <div class="imagem-professor">
         <!--img src="img/JulianaRibeiro.jpeg" alt="Imagem do professor"-->

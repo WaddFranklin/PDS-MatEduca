@@ -16,7 +16,7 @@
         <!-- CSS da aplicação -->
         <link href="/css/header_style.css" rel="stylesheet">
         <link href="/css/footer_style.css" rel="stylesheet">
-        <link href="/css//index.css" rel="stylesheet">
+        <link href="/css/index.css" rel="stylesheet">
 
         <!-- Js -->
         <script src = 'js/script.js'></script>
