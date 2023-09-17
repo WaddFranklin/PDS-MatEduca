@@ -53,4 +53,13 @@ body{
     background-color: #000;
     margin: 7px 20px
 }
+#cadastro{
 
+    border: 1px solid #054A91;
+}
+
+#cadastro:hover{
+
+    background-color: #054A91;
+    color: #F2F6FB;
+}

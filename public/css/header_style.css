@@ -3,39 +3,63 @@ body{
     padding: 0;
     height: 100%;
 }
-header{
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+.container-header{
+    display: flex;
+    width: 100%;
+    padding: 15px 35px;
+    justify-content: space-between;
+    gap: 537px;
+    height: 100px;
+    background: var(--primary-50, #F2F6FB);
 }
 #navbar{
+    display: flex;
+    width: 100%;
     justify-content: space-between;
-    background-color: #fff;
-    padding: 10px 30px;
-    display: flex;
-    flex: 1;
-    align-items: ce;
+    align-items: center;
+    flex-shrink: 0;
+    height: 2vh;
 }
-#navbar li{
-    gap: 20px;
-    display: flex;
+#navbar ul{
     list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-#navbar a.nav-link{
-    color: rgba(0, 0, 0, 0.75);
+.nav-link{
+    text-decoration: none;
+    color: var(--primary-400, #054A91);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
 }
-a.nav-link.active{
-    color: rgba(0, 0, 0, 1);
+.active{
     font-weight: 900;
 }
-#navbar a.navbar-brand{
-    font-weight: bold;
-    color: #000;
-    font-size: 1.5em;
-    padding-left: 30px;
+#logo{
+    color: var(--primary-500, #003773);
+    font-family: Helvetica Neue;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    padding-left: 70px;
 }
 .vertical-divider{
     width: 1px;
     height: 30px;
     background-color: #000;
     margin: 7px 20px
+}
+#cadastro{
+
+    border: 1px solid #054A91;
+}
+
+#cadastro:hover{
+
+    background-color: #054A91;
+    color: #F2F6FB;
 }

@@ -14,7 +14,7 @@
 }
 .title{
 
-    width: 2000px;
+    width: 1860px;
     background: var(--primary-50, #F2F6FB);
     height: 25vh;
 }
@@ -76,3 +76,67 @@
     border-radius: 8px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
 }
+
+/*Parte que estiliza os cards*/
+.cards-professores {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+.card-professor{
+
+    word-wrap: break-word;
+    width: 350px;
+    height: 75%;
+    margin: 50px 275px;
+    border-radius: 4px;
+    border: 1px solid #E1E1E1;
+    background: var(--neutral-white, #FFF);
+}
+
+.imagem-professor{
+    width: 100%;
+    display: flex;
+    background-image: url("../../img/JulianaRibeiro.jpeg");
+    background-repeat: no-repeat;
+    background-position: 50% center;
+    background-attachment: fixed;
+    padding: 104px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.informacao-professor{
+    padding: 10px 10px;
+}
+.informacoes-experience{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+}
+.informacoes-experience label{
+
+    font-weight: 700;
+}
+
+.informacoes-experience ul{
+    list-style: none;
+    align-items: flex-start;
+}
+.informacoes-experience li{
+
+    padding: 5px 0px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background: #FAFAFA;
+}
+.experience{
+    display: flex;
+    flex-direction: column;
+}
+

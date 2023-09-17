@@ -10,46 +10,37 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 
         <!-- CSS Bootstrap -->
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <!-- CSS da aplicação -->
         <link href="/css/header_style.css" rel="stylesheet">
         <link href="/css/footer_style.css" rel="stylesheet">
-        <link href="/css/index.css" rel="stylesheet">
+        <link href="/css//index.css" rel="stylesheet">
 
         <!-- Js -->
-
+        <script src = 'js/script.js'></script>
     </head>
     <body>
         <header>
-            <navbar class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-
-                    <div class="collapse navbar-collapse" id="navbar">
-
-                        <a href="/" class="navbar-brand">MatEduca</a>
-
-                        <ul class="navbar-nav">
-
-                            <li class="nav-item">
-                                <a href="/" id="professor" class="nav-link">Professores</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/help" class="nav-link">Como Funciona</a>
-                            </li>
-                            <div class="vertical-divider"></div>
-                            <li class="nav-item">
-                                <a href="/login" class="nav-link">Entrar</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/cadastro" class="nav-link">Cadastrar-se</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </navbar>
+            <div class="container-header">
+                <navbar class="navbar" id="navbar">
+                    <a href="/teste" id="logo">MatEduca</a>
+                    <ul class="navs-links">
+                        <li class="navs-items">
+                            <a href="/teste" class="nav-link">Professores</a>
+                        </li>
+                        <li class="navs-items">
+                            <a href="/help" class="nav-link">Como Funciona</a>
+                        </li>
+                        <div class="vertical-divider"></div>
+                        <li class="navs-items">
+                            <a href="/login" class="nav-link">Entrar</a>
+                        </li>
+                        <li class="navs-items"><a href="/cadastro" id = "cadastro" class="nav-link">Cadastrar-se</a></li>
+                    </ul>
+                </navbar>
+            </div>
         </header>
 
       @yield('content')
@@ -60,7 +51,7 @@
 
         <div class = "rodape-up-right">
 
-        <a  class = "delimiter" href="/">Professores</a>
+        <a href="/">Professores</a>
         <a href="/">Política de privacidade</a>
         </div>
 
