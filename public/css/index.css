@@ -82,17 +82,23 @@
     display: inline-flex;
     align-items: flex-start;
     gap: 24px;
+    width: 100%;
+}
+.container-cards{
+    margin: 0px 300px;
+    display: inline-flex;
+    align-items: flex-start;
 }
 .card-professor{
 
     word-wrap: break-word;
-    width: 350px;
+    width: 320px;
     height: 75%;
     margin-top: 50px;
-    margin-left: 35px;
+    margin-left: 20px;
     border-radius: 4px;
     border: 1px solid #E1E1E1;
-    background: url("../../img/JulianaRibeiro.jpeg"),lightgray 50%/cover no-repeat;
+
 }
 
 .imagem-professor{
