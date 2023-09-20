@@ -1,3 +1,4 @@
+/*Parte que estiliza o visual do professor*/
 div.bg-image.perfil-professor{
     width: 100%;
     height: 368px;
@@ -7,30 +8,32 @@ div.bg-image.perfil-professor{
     flex-shrink: 0;
 }
 .box-image-perfil{
-    width: 251px;
+    width: 13%;
     height: 251px;
     background-color: white;
     border-radius: 8px;
     flex-shrink: 0;
     margin-left: 20px;
-    position: fixed;
-    top: 33%;
-    left: 98px;
+    position: absolute;
+    top: 325px;
+    left: 150px;
     text-align: center;
 }
 .image-perfil{
 
-    width: 233px;
+    width: 100%;
     height: 233px;
     border-radius: 8px;
     flex-shrink: 0;
     padding: 5px 5px;
 }
+/*Parte que estiliza as informações do professor*/
 section.informations-about{
     display: flex;
 }
 div.main-information{
 
+    display: inline-block;
     position: relative;
     left: 23%;
     margin: 20px;
@@ -42,6 +45,7 @@ div.main-information{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    width: 75%;
 }
 .main-information h4{
     color: #787878;
@@ -49,5 +53,86 @@ div.main-information{
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    line-height: normal;
+    width: 75%;
+}
+.resume{
+    display: flex;
+    width: 50%;
+    padding: 32px;
+    margin: 65px 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9;
+}
+.resume hr{
+    width: 97%;
+    height: 1px;
+    background: #D9D9D9;
+}
+.resume-text{
+
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+}
+.register-time{
+    color: #A3A3A3;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+.resume-middle p{
+
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.resume-middle ul{
+    list-style: none;
+    display: inline-flex;
+    margin-left: 1px;
+    margin-top: 10px;
+}
+.resume-middle li{
+    padding: 10px 5px;
+    color: var(--highlight-600, #803900);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 20%;
+}
+.resume-middle div{
+    background: var(--highlight-50, #FFF8F2);
+    margin: 0px 10px;
+}
+.resume-down p{
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.resume-down :first-child{
+
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
     line-height: normal;
 }
