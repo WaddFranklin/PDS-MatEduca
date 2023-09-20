@@ -70,8 +70,9 @@ div.main-information{
 }
 .resume hr{
     width: 97%;
-    height: 1px;
+    height: 2px;
     background: #D9D9D9;
+    padding: 0;
 }
 .resume-text{
 
@@ -106,7 +107,7 @@ div.main-information{
     margin-top: 10px;
 }
 .resume-middle li{
-    padding: 10px 5px;
+    padding: 10px 10px;
     color: var(--highlight-600, #803900);
     font-family: Helvetica Neue;
     font-size: 16px;
@@ -117,7 +118,7 @@ div.main-information{
 }
 .resume-middle div{
     background: var(--highlight-50, #FFF8F2);
-    margin: 0px 10px;
+    margin: 7px 4px;
 }
 .resume-down p{
     color: #000;
@@ -136,3 +137,125 @@ div.main-information{
     font-weight: 700;
     line-height: normal;
 }
+/*Parte qe estiliza as recomendações*/
+
+.avalations{
+
+    display: flex;
+}
+.classification{
+
+    width: 100%;
+    margin: 0px 75px;
+}
+.student-avaliation{
+
+    display: inline-flex;
+    width: 450px;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9;
+    margin: 0px 20px;
+}
+.student-avaliation i{
+
+    color: orange;
+    padding: 0px 2px;
+}
+.text-avaliation.student{
+    color: #5C5C5C;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    align-self: stretch;
+}
+.name-student{
+    align-self: stretch;
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+}
+.agendar-aula{
+    position: absolute;
+    top: 300px;
+    right: 10%;
+}
+.marcar-aula{
+    display: flex;
+    width: 392px;
+    padding: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9;
+    background: #FFF;
+}
+.marcar-aula hr{
+    width: 100%;
+    height: 1px;
+    background: #D9D9D9;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.total-avaliation i{
+    color: orange;
+    padding: 0px 2px;
+}
+.resume-middle .sessions-time{
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 4px;
+    background: #F9F9F9;
+    margin: 0px 5px;
+    margin-bottom: 30px;
+}
+#free-time{
+
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#time{
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#agendar{
+    width: 100%;
+    display: flex;
+    padding: 8px 0px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 4px;
+    background: var(--highlight-500, #BF5600);
+    color: #FFF;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
