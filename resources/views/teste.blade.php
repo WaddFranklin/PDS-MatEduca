@@ -49,7 +49,7 @@
         <hr>
 
         <div class="resume-down">
-            <p class = "curr">Curriculo</p>
+            <p class = "curr">Curriculum</p>
             <p>Graduanda em Engenharia Elétrica pela Universidade Federal de Minas Gerais</p>
             <p>Técnico em Eletrotécnica no Instituto Federal de Minas Gerais</p>
         </div>
