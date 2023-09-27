@@ -60,7 +60,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #0000002f;
+  background-color: #0000007f;
   z-index: 1;
 }
 .card-login{
