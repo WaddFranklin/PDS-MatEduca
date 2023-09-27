@@ -28,18 +28,40 @@
 
 
             </div>
-            <button id="agendar" type ="button">Agendar Aula com Juliana</button>
+            <button @click="viewCard" class="agendar" type ="button">Agendar Aula com Juliana</button>
+
+            <FormLogin v-if= "!isLogged && isVisible" @show-Modal="showModal"/>
         </div>
     </section>
 </template>
 
 <script>
 import Divider from './Divider.vue'
+import FormLogin from './FormLogin.vue'
 import Listsubjects from './Listsubjects.vue'
 export default {
-  components: { Listsubjects, Divider },
+  components: { Listsubjects, Divider, FormLogin },
 
+    data(){
+
+        return{
+
+            isLogged: false,
+            isVisible: false,
+        }
+    },
+    methods:{
+            showModal(){
+
+                this.isVisible = !this,this.isVisible;
+            },
+            viewCard(){
+
+                this.isVisible = true;
+            },
+    }
 }
+
 </script>
 
 <style>
@@ -66,20 +88,20 @@ export default {
 }
 .resume-middle .sessions-time{
     color: #1E1E1E;
-    font-family: Helvetica Neue;
+    font-family: Helvetica neue;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     border-radius: 4px;
-    background: #F9F9F9;
+    background:  #FFF; 
     margin: 0px 5px;
     margin-bottom: 30px;
 }
 #free-time{
 
     color: #000;
-    font-family: Helvetica Neue;
+    font-family: Helvetica neue;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -93,7 +115,7 @@ export default {
     font-weight: 400;
     line-height: normal;
 }
-#agendar{
+.agendar{
     width: 100%;
     display: flex;
     padding: 8px 0px;
@@ -104,10 +126,16 @@ export default {
     border-radius: 4px;
     background: var(--highlight-500, #BF5600);
     color: #FFF;
-    font-family: Helvetica Neue;
+    font-family: Helvetica;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 150%;
+    border-style: none;
+}
+.agendar:hover{
+    background-color: #BF5600;
+    opacity: 0.8;
+    transition: 1s;
 }
 </style>

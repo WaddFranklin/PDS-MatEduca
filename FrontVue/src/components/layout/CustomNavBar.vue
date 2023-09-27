@@ -3,10 +3,10 @@
    <header>
         <div class="container-header">
             <navbar class="navbar" id="navbar">
-                <a href="/teste" id="logo">MatEduca</a>
+                <a href="/" id="logo">MatEduca</a>
                  <ul class="navs-links">
                     <li class="navs-items">
-                        <a href="/teste" class="nav-link">Professores</a>
+                        <a href="/" class="nav-link">Professores</a>
                     </li>
                     <li class="navs-items">
                         <a href="/help" class="nav-link">Como Funciona</a>
