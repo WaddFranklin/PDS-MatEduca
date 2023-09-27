@@ -41,6 +41,7 @@ export default {
 <style>
 .avalations{
 
+    width: 100%;
     display: flex;
 }
 .classification{

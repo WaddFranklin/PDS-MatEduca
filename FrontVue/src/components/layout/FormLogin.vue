@@ -12,7 +12,7 @@
         <input type="text" name="login" placeholder="Digite aqui seu e-mail">
 
         <label for="password">Senha</label>
-        <input type="text" name="password" placeholder="Digite aqui sua senha">
+        <input type="password" name="password" placeholder="Digite aqui sua senha">
 
         <button  class="agendar" type="submit">Entrar</button>
       </form>

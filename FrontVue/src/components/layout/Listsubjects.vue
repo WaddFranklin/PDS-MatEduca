@@ -27,7 +27,11 @@ export default {
         border-radius: 4px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
-        background: var(--highlight-50, #FFF8F2); 
-        width: 15%;
+        background: var(--highlight-50, #FFF8F2);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
 }
 </style>

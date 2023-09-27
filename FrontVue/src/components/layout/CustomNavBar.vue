@@ -41,7 +41,7 @@ body{
     overflow-x: hidden;
 }
 header{
-    width: 1820px;
+    width: 98%;
 }
 .container-header{
     display: flex;
