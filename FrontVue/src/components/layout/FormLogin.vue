@@ -1,5 +1,6 @@
 <template>
-    <section class="card-login">
+    <div class="modal-overlay">
+        <section class="card-login">
       <div class = "head">
         <p class="title-login">Entrar </p>
         <button @click="$emit('showModal')"><i class="bi bi-x"></i></button>
@@ -26,7 +27,7 @@
 
       <button class="login-with-gmail" type="button">Entrar com o google</button>
 
-        
+
       <div class="another-options">
         <ul class="options-card-login">
         <li>
@@ -38,6 +39,7 @@
       </ul>
       </div>
     </section>
+    </div>
 </template>
 
 <script>
@@ -51,13 +53,15 @@ export default {
 
 <style>
 .modal-overlay{
-  position: absolute;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #0000001f;
-  z-index: 1000px;
+  background-color: #0000002f;
+  z-index: 1;
 }
 .card-login{
     display: flex;
@@ -66,7 +70,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 32px; 
+    gap: 32px;
     position: fixed;
     top: 30%;
     left: 30%;
@@ -85,7 +89,7 @@ export default {
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal; 
+    line-height: normal;
 }
 .head button{
   border-style: none;
@@ -121,18 +125,18 @@ export default {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal; 
+  line-height: normal;
 }
 .form-login input{
   display: flex;
   align-items: center;
   gap: 8px;
-  align-self: stretch; 
+  align-self: stretch;
   width: 200%;
   height: 1vh;
   padding: 20px;
   border-radius: 8px;
-  background: #F9F9F9; 
+  background: #F9F9F9;
   margin: 10px 0px;
   border-style: none;
 }
@@ -168,9 +172,9 @@ export default {
   justify-content: center;
   align-items: flex-start;
   gap: 8px;
-  align-self: stretch; 
+  align-self: stretch;
   border-radius: 4px;
-  border: 1px solid #D9D9D9; 
+  border: 1px solid #D9D9D9;
   text-align: center;
   color: #1E1E1E;
   font-family: Helvetica Neue;
