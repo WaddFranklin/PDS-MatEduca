@@ -1,7 +1,7 @@
 <template>
 <div class="container-conjunto">
 
-    <div class="divider">
+    <div id="divider-search">
         <div class="title">
             <h1>Ensino personalizado do <span>seu jeito</span> e <span>no seu tempo</span>.</h1>
         </div>
@@ -29,7 +29,7 @@ export default {
     .container-conjunto{
         display: flex;
     }
-    .divider{
+    #divider-search{
         display: flex;
         flex-wrap: wrap;
         margin: 0px auto;
@@ -110,7 +110,6 @@ export default {
         border-radius: 8px;
         border-style: none;
         font-size: 18px;
-        
         box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.12);
     }
 </style>

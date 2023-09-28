@@ -68,17 +68,18 @@ export default {
 
 <style>
     .cards-professores {
-        display: inline-flex;
+        display: flex;
         align-items: flex-start;
         gap: 24px;
         width: 100%;
     }
     .container-cards{
-        margin: 0px 150px;
+        margin: 10px 150px;
         display: flex;
         align-items: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
+
     }
     .card-professor{
 
@@ -135,7 +136,7 @@ export default {
         border-radius: 4px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
-        background: var(--highlight-50, #FFF8F2); 
+        background: var(--highlight-50, #FFF8F2);
     }
     .experience{
         display: flex;

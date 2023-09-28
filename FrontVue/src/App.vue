@@ -1,9 +1,10 @@
 <template>
-  <PerfilPublico/>
+  <HomeView/>
 </template>
 
 <script>
 import HomeView from './Views/HomeView.vue'
+import Perfil from './Views/Perfil.vue'
 import PerfilPublico from './Views/PerfilPublico.vue'
 
 export default {
@@ -11,6 +12,7 @@ export default {
   components: {
     HomeView,
     PerfilPublico,
+    Perfil,
   }
 }
 </script>
