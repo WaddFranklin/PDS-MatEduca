@@ -2,6 +2,7 @@
     <section class="cards-professores">
         <div class="container-cards">
             <div class="card-professor" v-for="(professor,index) in professores" v-bind:key="index">
+                <router-link class="link-card" :to="{name:'professor',params:{id: professor.id}}">
                 <div class="imagem-professor">
                 <!--img src="img/JulianaRibeiro.jpeg" alt="Imagem do professor"-->
                 </div>
@@ -26,6 +27,7 @@
                         <listsubjects/>
                     </div>
                 </div>
+                </router-link>
             </div>
         </div>
     </section>
@@ -40,23 +42,30 @@ export default {
         return{
             professores:[
                 {
+                    id:178821,
                     nome: 'Juliana Ribeiro',
                     experience: '3 anos',
 
                 },
                 {
+                    id:173321,
                     nome: 'Carlos Silveira',
                     experience: '5 anos',
                 },
                 {
+                    id:1721,
+
                     nome: 'Carlos Silveira',
                     experience: '5 anos',
                 },
                 {
+                    id:199829,
+
                     nome: 'Carlos Silveira',
                     experience: '5 anos',
                 },
                 {
+                    id:178222121,
                     nome: 'Carlos Silveira',
                     experience: '5 anos',
                 },
@@ -66,7 +75,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .link-card{
+        text-decoration: none;
+        color: black;
+    }
     .cards-professores {
         display: flex;
         align-items: flex-start;

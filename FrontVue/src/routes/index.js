@@ -8,7 +8,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: () => import('../Views/HomeView.vue') },
-  { path: '/professor', component: () => import('../Views/PerfilPublico.vue') },
+  { path: '/professor/:id',name:'professor', component: () => import('../Views/PerfilPublico.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option
