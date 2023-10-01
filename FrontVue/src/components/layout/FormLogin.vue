@@ -72,7 +72,7 @@ export default {
     align-items: flex-start;
     gap: 32px;
     position: fixed;
-    top: 30%;
+    top: 20%;
     left: 30%;
     background: #fff;
     opacity: 1;
