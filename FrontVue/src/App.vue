@@ -1,5 +1,5 @@
 <template>
-  <HomeView/>
+  <router-view/>
 </template>
 
 <script>

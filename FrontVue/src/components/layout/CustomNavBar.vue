@@ -3,20 +3,20 @@
    <header>
         <div class="container-header">
             <navbar class="navbar" id="navbar">
-                <a href="/" id="logo">MatEduca</a>
+                <router-link to="/" id="logo">MatEduca</router-link>
                  <ul class="navs-links">
                     <li class="navs-items">
-                        <a href="/" class="nav-link">Professores</a>
+                        <router-link to="/" class="nav-link">Professores</router-link>
                     </li>
                     <li class="navs-items">
-                        <a href="/help" class="nav-link">Como Funciona</a>
+                        <router-link to="/help" class="nav-link">Como Funciona</router-link>
                     </li>
                     <div class="vertical-divider"></div>
                     <li class="navs-items">
-                        <a href="/login" class="nav-link">Entrar</a>
+                        <router-link to="/login" class="nav-link">Entrar</router-link>
                     </li>
                     <li class="navs-items">
-                        <a href="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</a>
+                        <router-link to="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</router-link>
                     </li>
                 </ul>
             </navbar>
