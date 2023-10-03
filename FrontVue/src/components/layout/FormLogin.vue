@@ -7,15 +7,17 @@
       </div>
 
       <div class="login-area">
-        <form  class="form-login" action="">
+        <div  class="form-login" action="">
         <label for="login">E-mail</label>
-        <input type="text" name="login" placeholder="Digite aqui seu e-mail">
+        <input ref="emailInput" type="text" name="login" placeholder="Digite aqui seu e-mail">
 
         <label for="password">Senha</label>
-        <input type="password" name="password" placeholder="Digite aqui sua senha">
+        <input ref="passwordInput" type="password" name="password" placeholder="Digite aqui sua senha">
 
-        <button  class="agendar" type="submit">Entrar</button>
-      </form>
+        <button @click="getUser" :disabled="isLoading" class="agendar" type="submit">
+        {{ isLoading ? 'Aguarde...' : 'Entrar' }}
+        </button>
+      </div>
       </div>
 
       <div class="google-option">
@@ -41,14 +43,54 @@
     </section>
     </div>
 </template>
-
 <script>
 import Divider from './Divider.vue'
-export default {
-  components: { Divider },
-  emits:['showModal'],
+import axios from 'axios';
 
-}
+
+export default {
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
+  methods: {
+    async getUser() {
+      const email = this.$refs.emailInput.value;
+      const password = this.$refs.passwordInput.value;
+
+      // Ativar o estado de carregamento
+      this.isLoading = true;
+
+      const apiService = () =>
+        axios.create({
+          baseURL: 'http://127.0.0.1:8000/',
+          headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+          },
+        });
+
+      
+      await apiService()
+        .get("/api", {
+        })
+        .then(function (response) {
+          // Seu código de manipulação de resposta aqui
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .finally(function () {
+          
+        });
+        this.isLoading = false;
+    },
+  },
+  components: { Divider },
+  emits: ['showModal'],
+};
 </script>
 
 <style>
