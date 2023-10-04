@@ -85,12 +85,7 @@ export default {
     font-weight: 700;
     line-height: normal;
 }
-.resume-middle ul{
-    list-style: none;
-    display: inline-flex;
-    margin-left: 1px;
-    margin-top: 10px;
-}
+
 .resume-middle li{
     padding: 10px 10px;
     color: var(--highlight-600, #803900);
