@@ -33,45 +33,54 @@
     </section>
 </template>
 
+
 <script>
 import Listsubjects from '../layout/Listsubjects.vue'
+import { mapGetters } from 'vuex';
 export default {
-  components: { Listsubjects },
-    name: 'CardsProfessores',
-    data(){
-        return{
-            professores:[
-                {
-                    id:178821,
-                    nome: 'Juliana Ribeiro',
-                    experience: '3 anos',
+    computed: {
+        ...mapGetters(['isAuthenticated', 'user']),
+    },
+    async mounted() {
+        console.log('isAuthenticated:', this.isAuthenticated);
+        console.log(JSON.parse(JSON.stringify(this.user)))
+    },
+    components: { Listsubjects },
+        name: 'CardsProfessores',
+        data(){
+            return{
+                professores:[
+                    {
+                        id:178821,
+                        nome: 'Juliana Ribeiro',
+                        experience: '3 anos',
 
-                },
-                {
-                    id:173321,
-                    nome: 'Carlos Silveira',
-                    experience: '5 anos',
-                },
-                {
-                    id:1721,
+                    },
+                    {
+                        id:173321,
+                        nome: 'Carlos Silveira',
+                        experience: '5 anos',
+                    },
+                    {
+                        id:1721,
 
-                    nome: 'Carlos Silveira',
-                    experience: '5 anos',
-                },
-                {
-                    id:199829,
+                        nome: 'Carlos Silveira',
+                        experience: '5 anos',
+                    },
+                    {
+                        id:199829,
 
-                    nome: 'Carlos Silveira',
-                    experience: '5 anos',
-                },
-                {
-                    id:178222121,
-                    nome: 'Carlos Silveira',
-                    experience: '5 anos',
-                },
-            ]
+                        nome: 'Carlos Silveira',
+                        experience: '5 anos',
+                    },
+                    {
+                        id:178222121,
+                        nome: 'Carlos Silveira',
+                        experience: '5 anos',
+                    },
+                ]
+            }
         }
-    }
 }
 </script>
 

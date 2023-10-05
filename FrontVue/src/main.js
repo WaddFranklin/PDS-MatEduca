@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Vue from 'vue'
+import Store from './components/store/store'
+import Vue from 'vue';
+import Vuex from 'vuex';
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import router from './routes'
 
@@ -16,4 +19,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'*/
 
 Vue.use(IconsPlugin)*/
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App);
+
+app.use(router);
+app.use(Store);
+
+app.mount('#app');

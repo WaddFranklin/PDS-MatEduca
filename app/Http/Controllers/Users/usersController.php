@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class usersController extends Controller
 {
     public function index(Request $request){
-        return response()->json(["status"=>True]);
+        $data = $request->all();
+        $email = $data['email'];
+        $password = $data['password'];
+        
+        return response()->json([
+            "email"=>$email,
+            "password"=>$password
+        ]);
     }
 }
