@@ -139,6 +139,7 @@ export default {
         justify-content: space-between;
         padding: 15px 10px;
         margin-top: 15px;
+        width: 100%;
     }
     .informacoes-experience label{
 
@@ -149,16 +150,20 @@ export default {
     .informacoes-experience ul{
         list-style: none;
         align-items: flex-start;
-        margin: 0px 5px;
-        width: 40%;
+        display: block;
+        margin: 10px 5px;
+        width: 100%;
+
     }
     .informacoes-experience li{
 
-        padding: 5px 0px;
+        display: inline-flex;
+        padding: 5px 15px;
         border-radius: 4px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
         background: var(--highlight-50, #FFF8F2);
+        width: 120%;
     }
     .experience{
         display: flex;

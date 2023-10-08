@@ -86,6 +86,9 @@ export default {
     color: orange;
     padding: 0px 2px;
 }
+.resume-middle ul{
+    padding: 0px 10px;
+}
 .resume-middle .sessions-time{
     color: #1E1E1E;
     font-family: Helvetica neue;
@@ -94,7 +97,7 @@ export default {
     font-weight: 500;
     line-height: normal;
     border-radius: 4px;
-    background:  #FFF; 
+    background:  #FFF;
     margin: 0px 5px;
     margin-bottom: 30px;
 }

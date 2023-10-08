@@ -1,5 +1,6 @@
 
 <template>
+<div>
    <header>
         <div class="container-header">
             <navbar class="navbar" id="navbar">
@@ -13,7 +14,9 @@
                     </li>
                     <div class="vertical-divider"></div>
                     <li class="navs-items">
-                        <router-link to="/login" class="nav-link">Entrar</router-link>
+                        <!--button @click="showModal()" type="button" id="button-login" class="nav-link">Entrar</button-->
+                        <router-link @click.stop.prevent="showModal()" to="#" class="nav-link">Entrar</router-link>
+
                     </li>
                     <li class="navs-items">
                         <router-link to="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</router-link>
@@ -22,15 +25,27 @@
             </navbar>
         </div>
     </header>
+    <FormLogin v-if="isVisible" @show-Modal="showModal"/>
+</div>
 </template>
 
 <script>
+import FormLogin from './FormLogin.vue'
 export default {
+  components: { FormLogin },
     name: 'CustomNavBar',
+    data(){
+        return{
+            isVisible: false,
+        }
+    },
+    methods:{
+        showModal(){this.isVisible = !this.isVisible;},
+    }
 }
 </script>
 
-<style>
+<style scoped>
 
 *{
     margin: 0;
@@ -78,6 +93,12 @@ header{
     font-size: 17px;
     font-style: normal;
     line-height: normal;
+}
+#button-login{
+    background: (--primary-50, #F2F6FB);
+    border-style: none;
+    padding: 10px;
+    color: (--primary-50, #F2F6FB);
 }
 .active{
     font-weight: 900;

@@ -15,20 +15,22 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     ul.subject-list{
         list-style: none;
         align-items: flex-start;
-        margin: 0px 5px;
+        display: inline-flex;
         width: 100%;
     }
     li.subject-item{
         padding: 5px 0px;
         border-radius: 4px;
+        align-items: flex-start;
+        margin-inline: 5px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
         background: var(--highlight-50, #FFF8F2);
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
