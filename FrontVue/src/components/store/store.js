@@ -34,7 +34,7 @@ const store = new Vuex.Store({
       try {
         const response = await apiService().post('/api', userData);
 
-        console.log(response.data)
+        console.log(response)
         if (response.status == 200) {
             commit('SET_AUTHENTICATED', true);
             commit('SET_USER', response.data);
