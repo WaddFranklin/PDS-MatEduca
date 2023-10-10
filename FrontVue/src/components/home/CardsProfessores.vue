@@ -8,7 +8,7 @@
                 </div>
                 <div class="infopart">
                     <div class="informacao-professor">
-                        <h2 class="card_description nome-professor">{{professor.nome}}</h2>
+                        <h2 class="card-description nome-professor">{{professor.nome}}</h2>
                         <p class="card-text star-icon">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -105,6 +105,14 @@ export default {
         border: 1px solid #E1E1E1;
 
     }
+    .card-description .nome-professor{
+        color: #1E1E1E;
+        font-family: Helvetica Neue;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
 
     .imagem-professor{
         width: 100%;
@@ -134,7 +142,7 @@ export default {
     }
     .informacoes-experience label{
 
-        font-weight: 700;
+        font-weight: 500;
         margin: 6px 0px;
     }
 

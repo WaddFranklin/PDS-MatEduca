@@ -28,7 +28,9 @@
                                     <p>Juliana Ribeiro</p>
                                     <p class="career">Professora</p>
                                 </div>
-                                <img class="img-perfil-navbar" src="../../assets/img/JulianaRibeiro.png" alt="Foto de Perfil">
+                                <div class="navvar-container-image">
+                                    <img class="img-perfil-navbar" src="../../assets/img/JulianaRibeiro.png" alt="Foto de Perfil">
+                                </div>
                             </div>
                         </router-link>
                     </li>
@@ -70,7 +72,7 @@ body{
     overflow-x: hidden;
 }
 header{
-    width: 98%;
+    width: 98.5%;
 }
 .container-header{
     display: flex;
@@ -119,7 +121,7 @@ header{
 }
 #logo{
     color: var(--primary-500, #003773);
-    font-family: Helvetica Neue;
+    font-family: Helvetica Neue,sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -148,21 +150,28 @@ header{
 .perfil-group{
     width: 100%;
     justify-content: space-between;
+    display: flex;
+    flex: row;
+}
+.navbar-container-image{
+
+    width: 50%;
+    display: flex;
+    flex: column;
 }
 .img-perfil-navbar{
-    width: 74px;
-    height: 74px;
-    border-radius: 54px;
-    display: inline-flex;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
     flex-direction: row-reverse;
     position: relative;
-    top: 50%;
-    right: 0%;
-
+    top: 0%;
+    right: 90%;
 }
 .navbar-perfil-description{
-    display: inline-flex;
-    flex-direction: row;
+    display: flex;
+    flex: column;
     flex-wrap: wrap;
     width: 50%;
     position: relative;
