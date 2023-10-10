@@ -13,13 +13,24 @@
                         <router-link to="/help" class="nav-link">Como Funciona</router-link>
                     </li>
                     <div class="vertical-divider"></div>
-                    <li class="navs-items">
+                    <li v-if="!isLogged" class="navs-items">
                         <!--button @click="showModal()" type="button" id="button-login" class="nav-link">Entrar</button-->
                         <router-link @click.stop.prevent="showModal()" to="#" class="nav-link">Entrar</router-link>
 
                     </li>
-                    <li class="navs-items">
+                    <li v-if="!isLogged" class="navs-items">
                         <router-link to="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</router-link>
+                    </li>
+                    <li v-if="isLogged" class="navs-items">
+                        <router-link class ="nav-link" to="/perfil">
+                            <div class="perfil-group">
+                                <div class="navbar-perfil-description">
+                                    <p>Juliana Ribeiro</p>
+                                    <p class="career">Professora</p>
+                                </div>
+                                <img class="img-perfil-navbar" src="../../assets/img/JulianaRibeiro.png" alt="Foto de Perfil">
+                            </div>
+                        </router-link>
                     </li>
                 </ul>
             </navbar>
@@ -41,6 +52,9 @@ export default {
     },
     methods:{
         showModal(){this.isVisible = !this.isVisible;},
+    },
+    props:{
+        isLogged: Boolean,
     }
 }
 </script>
@@ -130,5 +144,51 @@ header{
     background-color: #054A91;
     color: #F2F6FB;
     transition: 0.5s;
+}
+.perfil-group{
+    width: 100%;
+    justify-content: space-between;
+}
+.img-perfil-navbar{
+    width: 74px;
+    height: 74px;
+    border-radius: 54px;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    position: relative;
+    top: 50%;
+    right: 0%;
+
+}
+.navbar-perfil-description{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    position: relative;
+    top: 10%;
+}
+.navbar-perfil-description p{
+    /* Layout */
+    display: flex;
+    width: 100%;
+
+    /* estilização */
+
+    color: var(--primary-500, #003773);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.navbar-perfil-description p.career{
+
+    color: var(--neutral-300, #5E6475);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 </style>

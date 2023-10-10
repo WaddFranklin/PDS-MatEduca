@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CustomNavBar/>
+    <CustomNavBar :is-logged="userIsLogged"/>
     <SearchBar/>
     <CardsProfessores/>
     <CustomFooter/>
@@ -20,6 +20,11 @@ export default {
     CustomFooter,
     SearchBar,
     CardsProfessores,
+  },
+  data(){
+    return{
+        userIsLogged: false
+    }
   }
 }
 </script>

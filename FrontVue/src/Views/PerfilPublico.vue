@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CustomNavBar/>
+    <CustomNavBar :is-logged="userIsLogged"/>
     <ImagePerfil/>
     <MainInformation/>
     <Information/>
@@ -17,14 +17,19 @@ import ImagePerfil from '../components/perfil_professor/ImagePerfil.vue'
 import Information from '../components/perfil_professor/Information.vue'
 import MainInformation from '../components/perfil_professor/MainInformation.vue'
 export default {
-  components: { 
-    CustomNavBar, 
+  components: {
+    CustomNavBar,
     CustomFooter,
     ImagePerfil,
     MainInformation,
     Information,
-    CardAgendar, 
+    CardAgendar,
   },
+  data(){
+    return{
+        userIsLogged: false,
+    }
+  }
 
 }
 </script>
