@@ -14,7 +14,10 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Usuario::class);
+            $table->foreignId('usuario_id')->constrained(
+                'usuarios',
+                'id'
+            );
             $table->date('data');
             $table->time('hora');
             $table->boolean('ativo');

@@ -15,10 +15,22 @@ return new class extends Migration
     {
         Schema::create('tutorias', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Horario::class);
-            $table->foreignIdFor(TutoriaStatus::class);
-            $table->foreignId('aluno_id');
-            $table->foreignId('tutor_id');
+            $table->foreignId('horario_id')->constrained(
+                'horarios',
+                'id'
+            );
+            $table->foreignId('tutoria_status_id')->constrained(
+                'tutoria_statuses',
+                'id'
+            );
+            $table->foreignId('aluno_id')->constrained(
+                'usuarios',
+                'id'
+            );
+            $table->foreignId('tutor_id')->constrained(
+                'usuarios',
+                'id'
+            );
             $table->boolean('ativo');
             $table->timestamps();
         });

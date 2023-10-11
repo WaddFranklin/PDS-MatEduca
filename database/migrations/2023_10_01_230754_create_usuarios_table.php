@@ -16,9 +16,18 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Login::class);
-            $table->foreignIdFor(UsuarioTipo::class);
-            $table->foreignIdFor(Telefone::class);
+            $table->foreignId('login_id')->constrained(
+                'logins',
+                'id'
+            );
+            $table->foreignId('usuario_tipo_id')->constrained(
+                'usuario_tipos',
+                'id'
+            );
+            $table->foreignId('usuario_id')->constrained(
+                'telefones',
+                'id'
+            );
             $table->string('nome', 255);
             $table->date('data_nascimento');
             $table->string('email', 128);
