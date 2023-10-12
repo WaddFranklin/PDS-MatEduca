@@ -36,15 +36,8 @@
 
 <script>
 import Listsubjects from '../layout/Listsubjects.vue'
-import { mapGetters } from 'vuex';
+
 export default {
-    computed: {
-        ...mapGetters(['isAuthenticated', 'user']),
-    },
-    async mounted() {
-        console.log('isAuthenticated:', this.isAuthenticated);
-        console.log(JSON.parse(JSON.stringify(this.user)))
-    },
     components: { Listsubjects },
         name: 'CardsProfessores',
         data(){

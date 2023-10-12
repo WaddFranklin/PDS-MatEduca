@@ -13,35 +13,70 @@
                         <router-link to="/help" class="nav-link">Como Funciona</router-link>
                     </li>
                     <div class="vertical-divider"></div>
-                    <li class="navs-items">
+                    <li class="navs-items" v-if="!this.isAuthenticated">
                         <!--button @click="showModal()" type="button" id="button-login" class="nav-link">Entrar</button-->
                         <router-link @click.stop.prevent="showModal()" to="#" class="nav-link">Entrar</router-link>
 
                     </li>
-                    <li class="navs-items">
+                    <li class="navs-items" v-if="!this.isAuthenticated">
                         <router-link to="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</router-link>
+                    </li>
+                    <li class="navs-items" v-if="isAuthenticated">
+                        <div style="display: flex; align-items: center;">
+                            <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                                <router-link :to="'/aluno/' + user.data.id" class="nav-link">
+                                <a style="font-size: 12px">{{ user.data.nome }}</a>
+                                </router-link>
+                                <p style="margin-top: 5px; font-size: 11px">{{type}}</p>
+                            </div>
+                            <img
+                                src="../../assets/img/perfil.png"
+                                alt="Imagem do usuário"
+                                style="border-radius: 50%; width: 48px; height: 48px; margin-left: 10px;"
+                            />
+                        </div>
                     </li>
                 </ul>
             </navbar>
         </div>
     </header>
-    <FormLogin v-if="isVisible" @show-Modal="showModal"/>
+    <FormLogin v-if="isVisible" @show-Modal="showModal" :modal="showModal"/>
 </div>
 </template>
 
 <script>
 import FormLogin from './FormLogin.vue'
+import { mapGetters } from 'vuex';
 export default {
-  components: { FormLogin },
-    name: 'CustomNavBar',
-    data(){
-        return{
-            isVisible: false,
-        }
+    computed: {
+        ...mapGetters(['isAuthenticated', 'user']),
     },
-    methods:{
-        showModal(){this.isVisible = !this.isVisible;},
-    }
+    mounted() {
+        this.setType()
+    },
+    components: { FormLogin },
+        name: 'CustomNavBar',
+        data(){
+            return{
+                isVisible: false,
+                type: ''
+            }
+        },
+        methods:{
+            showModal(){
+                this.isVisible = !this.isVisible;
+                this.setType()
+            },
+            setType(){
+                const user = JSON.parse(JSON.stringify(this.user))
+                if (user)
+                {
+                    if (user.data.usuario_tipo_id == 1) {
+                        this.type = "Aluno"
+                    }
+                }
+            }
+        }
 }
 </script>
 
