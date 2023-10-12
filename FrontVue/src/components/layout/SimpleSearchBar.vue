@@ -1,6 +1,6 @@
 <template>
     <div class="container-search">
-        <form action="" class="search-form simple">
+        <form action="" class="search-form-simple">
             <input name = "search-class" type="text" class="simple-search-bar"  placeholder="Pesquisar Aula...">
             <div class="filter-container-simple">
                 <button type = "submit" class="filter-buttons " >Assunto</button>
@@ -19,11 +19,13 @@ export default {
 </script>
 
 <style scoped>
-.form-search .simple{
+.search-form-simple{
     display: inline-flex;
+    flex-direction: row;
+    width: 100%;
 }
 .container-search .simple-search-bar{
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,9 +60,11 @@ export default {
     position: relative;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 50%;
+    width: 65%;
+    margin: 0px 20px;
 }
 .filter-container-simple button{
-    width: 15%;
+    margin: 30px 5px;
+    width: 20%;
 }
 </style>

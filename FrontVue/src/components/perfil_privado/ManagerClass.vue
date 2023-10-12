@@ -8,7 +8,19 @@
         </section>
         <section class="manager-class-right-block">
             <section class="manager-block-up">
-                <h1>Próximas Aulas</h1>
+                <div class="block-up-head">
+                    <h1>Próximas Aulas</h1>
+
+                    <div class="block-up-head-group">
+                        <p>Vizualizar como</p>
+                        <div class =" block-up-head-icons">
+                            <i class="bi bi-list-ul"></i>
+                        </div>
+                        <div class="block-up-head-icons" >
+                            <i class="bi bi-calendar"></i>
+                        </div>
+                    </div>
+                </div>
                 <SimpleSearchBar/>
             </section>
         </section>
@@ -64,7 +76,15 @@ export default {
 .manager-block-up{
     width: 100%;
 }
-.manager-block-up h1{
+.block-up-head{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.block-up-head h1{
+    width: 20%;
+
     color: var(--primary-500, #003773);
     font-family: Helvetica Neue;
     font-size: 20px;
@@ -72,5 +92,29 @@ export default {
     font-weight: 600;
     line-height: normal;
     margin: 0px 5px;
+}
+.block-up-head-group{
+    width: 35%;
+    display: inline-flex;
+    flex-direction: row;
+}
+.block-up-head-group p{
+
+    margin: 6px 10px;
+}
+.block-up-head-icons{
+
+    width: fit-content;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 4px;
+}
+.block-up-head-icons i{
+
+    color: orangered;
+    width: 24px;
+    height: 24px;
+    margin: 0px 10px;
 }
 </style>
