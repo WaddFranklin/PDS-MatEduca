@@ -1,5 +1,5 @@
 <template>
-  <p>Página Inicial  <i class="bi bi-caret-right-fill"></i> Gerenciar Aulas</p>
+  <p class="flux-indicator-p">Página Inicial  <i class="bi bi-caret-right-fill"></i> Gerenciar Aulas</p>
 </template>
 
 <script>
@@ -10,9 +10,9 @@ export default {
 
 <style scoped>
 
-p{
-    font-weight: 700;
+p.flux-indicator-p{
+    font-weight: 500;
     margin: 20px 10px;
-    padding: 20px 45px;
+    padding: 20px 60px;
 }
 </style>

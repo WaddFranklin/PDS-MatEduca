@@ -2,17 +2,20 @@
 <template>
     <div>
         <FluxIndicator/>
+        <ManagerClass/>
     </div>
 </template>
 
 <script>
 import FluxIndicator from '../layout/FluxIndicator.vue'
+import ManagerClass from './ManagerClass.vue'
 export default {
-
+    components: { FluxIndicator, ManagerClass }
 }
 </script>
 
-<style>
+<style scoped>
+
 
 </style>
 
