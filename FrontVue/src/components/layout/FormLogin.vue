@@ -47,32 +47,34 @@ import Divider from './Divider.vue'
 
 
 export default {
-data() {
-  return {
-    email: '',
-    password: '',
-  };
-},
-methods: {
-  async login() {
-    const userData = {
-      email: this.email,
-      password: this.password,
+  data() {
+    return {
+      email: '',
+      password: '',
     };
-
-    // Chame a ação loginUser do Vuex
-    await this.$store.dispatch('loginUser', userData);
-
-    // Verifique se o login foi bem-sucedido
-    if (this.$store.getters.isAuthenticated) {
-      this.$router.push('/');
-    } else {
-      alert('Falha no login. Verifique suas credenciais.');
-    }
   },
-},
-components: { Divider },
-emits: ['showModal'],
+  methods: {
+    async login() {
+      const userData = {
+        email: this.email,
+        password: this.password,
+      };    
+
+      // Chame a ação loginUser do Vuex
+      await this.$store.dispatch('loginUser', userData);
+
+      
+      // Verifique se o login foi bem-sucedido
+      if (this.$store.getters.isAuthenticated) {
+        this.$emit('showModal')
+        this.$router.push('/');
+      } else {
+        alert('Falha no login. Verifique suas credenciais.');
+      }
+    },
+  },
+  components: { Divider },
+  emits: ['showModal'],
 };
 </script>
 
