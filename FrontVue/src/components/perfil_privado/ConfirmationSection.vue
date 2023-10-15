@@ -1,23 +1,48 @@
 <template>
-
     <section class="class-confimation">
         <h2 class="month-title">Agosto</h2>
         <divider/>
         <ul class="waiting-list">
-            <li><section class="class-requesition">
+            <li>
+                <section class="class-requesition">
 
-                <div class="student-requesition-information-up">
-                    <div class="requesition-information-left">
-                        <h3>Nome do estudante</h3>
-                        <p>29 de agosto de 2023 às 14:00</p>
+                    <div class="student-requesition-information-up">
+                        <div class="requesition-information-left">
+                            <h3>Nome do estudante</h3>
+                            <p>29 de agosto de 2023 às 14:00</p>
+                        </div>
+                        <div class="requesition-information-right">
+                            <button @click="Recuse" v-if="!isAproved && !isRecused" class="negate-btn" type="button"> <i class="bi bi-x-circle-fill"></i>Recusar</button>
+
+                            <button @click="Aprove" v-if="!isAproved && !isRecused" class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
+
+                            <button v-if="isAproved" class="meet-link-btn"> Link da chamada</button>
+                            <button v-if="isAproved" class="confirmation-btn simple" type="button"><i class="bi bi-check"></i> Confirmada</button>
+                        </div>
                     </div>
-                    <div class="requesition-information-right">
-                        <button class="negate-btn" type="button"> <i class="bi bi-x-circle-fill"></i>Recusar</button>
-                        <button class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
+                    <divider/>
+
+                    <div class="student-requesition-information-down">
+                        <table>
+                            <tr>
+                                <th>Assuntos</th>
+                                <th>Nível de Conhecimento</th>
+                            </tr>
+                            <tr>
+                                <td>Equação do segundo grau</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Algebra</td>
+                                <td>3</td>
+                            </tr>
+
+                        </table>
+                        <p class="majority-problems">Maiores Dificuldades</p>
+                        <p>{{ studentDifficult }}</p>
                     </div>
-                </div>
-                <divider/>
-            </section></li>
+                </section>
+            </li>
         </ul>
     </section>
 </template>
@@ -27,8 +52,24 @@ import Divider from '../layout/Divider.vue'
 export default {
   components: { Divider },
 
+  data(){
+    return{
+        studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
+        isAproved: false,
+        isRecused: false,
+    }
+  },
+  methods:{
+    Aprove(){
+        this.isAproved = true;
+    },
+    Recuse(){
+        this.isRecused = true;
+    }
+  }
 }
 </script>
+
 
 <style scoped>
 
@@ -91,7 +132,7 @@ export default {
     justify-content: space-between;
 }
 .requesition-information-right{
-    width: fit-content;
+    width: 60%;
     display: flex;
 }
 .requesition-information-right button{
@@ -117,13 +158,13 @@ export default {
 .requesition-information-right .confirmation-btn i{
 
     position: relative;
-    left: -8px;
+    left: -10px;
     top: 0px;
 }
 .requesition-information-right .negate-btn i{
 
     position: relative;
-    left: -8px;
+    left: -10px;
 }
 
 .requesition-information-right .negate-btn{
@@ -134,6 +175,26 @@ export default {
     background: var(--positive-50, #E3F5E1);
     color: var(--positive-600, #154C21);
 }
+.requesition-information-right .meet-link-btn{
+    width: 100%;
+    display: flex;
+    padding: 16px 24px;
+
+
+    color: var(--primary-500, #003773);
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 21px */
+    border-radius: 4px;
+    border: 1px solid #D9D9D9;
+    background: var(--neutral-white, #FFF);
+}
+.meet-link-btn:hover{
+    background: var(--neutral-white, #cac7c7);
+    transition: 1s;
+}
 .requesition-information-right .negate-btn:hover{
     background: var(--negative-50, #d8c4c2);
     transition: 1s;
@@ -142,9 +203,58 @@ export default {
     background: var(--positive-50, #bdd5ba);
     transition: 1s;
 }
+.confirmation-btn .simple:hover{
+    background: var(--positive-50, #E3F5E1);
+}
 .requesition-information-left{
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+.student-requesition-information-down{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.student-requesition-information-down table{
+
+    justify-content: space-between;
+    width: 100%;
+}
+.student-requesition-information-down td{
+    padding: 15px 0px;
+
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.student-requesition-information-down th{
+    padding-bottom: 30px;
+
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+}
+.student-requesition-information-down p{
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+}
+.student-requesition-information-down .majority-problems{
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
 }
 </style>
