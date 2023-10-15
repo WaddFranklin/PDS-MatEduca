@@ -22,6 +22,7 @@
                     </div>
                 </div>
                 <SimpleSearchBar/>
+                <confirmation-section/>
             </section>
         </section>
         </section>
@@ -32,9 +33,10 @@
 import SearchBar from '../home/SearchBar.vue'
 import Divider from '../layout/Divider.vue'
 import SimpleSearchBar from '../layout/SimpleSearchBar.vue'
+import ConfirmationSection from './ConfirmationSection.vue'
 import NavIndexPerfil from './NavIndexPerfil.vue'
 export default {
-  components: { Divider, NavIndexPerfil, SearchBar, SimpleSearchBar },
+  components: { Divider, NavIndexPerfil, SearchBar, SimpleSearchBar, ConfirmationSection },
 
 }
 </script>
@@ -54,6 +56,7 @@ export default {
 .manager-class .divider{
 
     background: #D9D9D9;
+    margin: 20px 0px;
 }
 .manager-class-section{
     display: flex;
