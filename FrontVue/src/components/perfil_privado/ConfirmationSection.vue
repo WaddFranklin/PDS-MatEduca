@@ -16,7 +16,7 @@
 
                             <button @click="Aprove" v-if="!isAproved && !isRecused" class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
 
-                            <button v-if="isAproved" class="meet-link-btn"> Link da chamada</button>
+                            <button v-if="isAproved" @click="showModal()" class="meet-link-btn"> Link da chamada</button>
                             <button v-if="isAproved" class="confirmation-btn simple" type="button"><i class="bi bi-check"></i> Confirmada</button>
                         </div>
                     </div>
@@ -44,19 +44,22 @@
                 </section>
             </li>
         </ul>
+        <LinkMeetModal v-if="isModalVisible" @show-modal="showModal"/>
     </section>
 </template>
 
 <script>
 import Divider from '../layout/Divider.vue'
+import LinkMeetModal from '../layout/LinkMeetModal.vue';
 export default {
-  components: { Divider },
+  components: { Divider, LinkMeetModal },
 
   data(){
     return{
         studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
         isAproved: false,
         isRecused: false,
+        isModalVisible:false
     }
   },
   methods:{
@@ -65,6 +68,10 @@ export default {
     },
     Recuse(){
         this.isRecused = true;
+    },
+    showModal(){
+
+        this.isModalVisible = !this.isModalVisible;
     }
   }
 }
