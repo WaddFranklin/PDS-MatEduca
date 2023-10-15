@@ -29,6 +29,12 @@ return new class extends Migration
                 'id'
             );
             $table->string('nome', 255);
+            $table->string('sobrenome', 255);
+            $table->string('foto_perfil_path', 255);
+            $table->string('foto_capa_path', 255);
+            $table->string('titulo', 255);
+            $table->text('bio');
+            $table->text('curriculo');
             $table->date('data_nascimento');
             $table->string('email', 128);
             $table->string('cpf', 11);
