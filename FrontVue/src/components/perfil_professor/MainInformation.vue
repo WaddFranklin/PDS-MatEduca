@@ -50,7 +50,7 @@ div.main-information{
     font-family: Helvetica Neue;
     font-size: 32px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
     width: 75%;
 }

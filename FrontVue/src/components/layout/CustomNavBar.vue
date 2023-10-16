@@ -13,7 +13,7 @@
                         <router-link to="/help" class="nav-link">Como Funciona</router-link>
                     </li>
                     <div class="vertical-divider"></div>
-                    <li class="navs-items" v-if="!this.isAuthenticated">
+                    <li class="navs-items">
                         <!--button @click="showModal()" type="button" id="button-login" class="nav-link">Entrar</button-->
                         <router-link @click.stop.prevent="showModal()" to="#" class="nav-link">Entrar</router-link>
 
@@ -90,6 +90,7 @@ export default {
                 }
             }
         }
+
 }
 </script>
 
@@ -104,7 +105,7 @@ body{
     overflow-x: hidden;
 }
 header{
-    width: 98%;
+    width: 98.5%;
 }
 .container-header{
     display: flex;
@@ -153,7 +154,7 @@ header{
 }
 #logo{
     color: var(--primary-500, #003773);
-    font-family: Helvetica Neue;
+    font-family: Helvetica Neue,sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -178,5 +179,58 @@ header{
     background-color: #054A91;
     color: #F2F6FB;
     transition: 0.5s;
+}
+.perfil-group{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex: row;
+}
+.navbar-container-image{
+
+    width: 50%;
+    display: flex;
+    flex: column;
+}
+.img-perfil-navbar{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    top: 0%;
+    right: 90%;
+}
+.navbar-perfil-description{
+    display: flex;
+    flex: column;
+    flex-wrap: wrap;
+    width: 50%;
+    position: relative;
+    top: 10%;
+}
+.navbar-perfil-description p{
+    /* Layout */
+    display: flex;
+    width: 100%;
+
+    /* estilização */
+
+    color: var(--primary-500, #003773);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.navbar-perfil-description p.career{
+
+    color: var(--neutral-300, #5E6475);
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 </style>

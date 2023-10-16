@@ -55,7 +55,7 @@ export default {
         font-style: normal;
         font-weight: 700;
         line-height: 130%;
-        width: 450px;
+        width: 370px;
         margin: 70px auto;
 
     }

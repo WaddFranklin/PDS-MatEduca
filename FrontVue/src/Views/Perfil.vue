@@ -1,22 +1,20 @@
 <template>
   <div>
-    <CustomNavBar/>
-    <CustomFooter/>
+    <HomePerfil/>
   </div>
 </template>
 
 <script>
-import CustomFooter from '../components/layout/CustomFooter.vue'
-import CustomNavBar from '../components/layout/CustomNavBar.vue'
+import HomePerfil from '@/components/perfil_privado/HomePerfil.vue'
 export default {
 
     components:{
-        CustomNavBar,
-        CustomFooter,
-    }
+        HomePerfil,
+    },
 }
 </script>
 
+        HomePerfil
 <style>
 
 </style>
