@@ -29,7 +29,10 @@
 
             </div>
             <button @click="viewCard" class="agendar" type ="button">Agendar Aula com Juliana</button>
-
+            <div v-if="viewCard === true">
+                <Etapas>
+                </Etapas>
+            </div>
             <FormLogin v-if= "!isLogged && isVisible" @show-Modal="showModal"/>
         </div>
     </section>
@@ -39,8 +42,9 @@
 import Divider from './Divider.vue'
 import FormLogin from './FormLogin.vue'
 import Listsubjects from './Listsubjects.vue'
+import Etapas from "@/components/perfil_professor/Etapas.vue";
 export default {
-  components: { Listsubjects, Divider, FormLogin },
+  components: {Etapas, Listsubjects, Divider, FormLogin },
 
     data(){
 
@@ -78,7 +82,7 @@ export default {
         }
     },
 
-    
+
 }
 
 </script>
