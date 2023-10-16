@@ -99,7 +99,7 @@
                 <p><span>Maiores Dificuldades:</span> {{ maioresDificuldades }}</p>
             </div>
             <button @click="etapaAtual--">Voltar</button>
-            <button @click="confirmarAgendamento" class="botao-proxima-etapa">Confirmar Agendamento <img src="calendario.png"></button>
+            <button @click="confirmarAgendamento" class="botao-proxima-etapa">Confirmar Agendamento</button>
         </div>
     </div>
 </template>
