@@ -21,10 +21,10 @@
                     <div class="informacoes-experience">
                         <div class="experience">
                             <label for="">Experiência</label>
-                            <p>{{professor.experience}}</p>
+                            <p>{{professor.experiencia}} anos</p>
                         </div>
 
-                        <listsubjects/>
+                        <listsubjects :id="professor.id"/>
                     </div>
                 </div>
                 </router-link>
@@ -42,36 +42,32 @@ export default {
         name: 'CardsProfessores',
         data(){
             return{
-                professores:[
-                    {
-                        id:178821,
-                        nome: 'Juliana Ribeiro',
-                        experience: '3 anos',
+                professores: ''
+            }
+        },
+        async mounted(){
+            console.log(this.professores)
+            let result = await this.$store.dispatch('getTutors');
+            if (result) {
+                console.log(result.data)
+                this.professores = result.data
+            } else {
+                alert('Falha no login. Verifique suas credenciais.');
+            }
+        },
+        methods:{
+            async getImage(id){
+                let data = JSON.stringify(this.professores)
+                data = JSON.parse(data);
 
-                    },
-                    {
-                        id:173321,
-                        nome: 'Carlos Silveira',
-                        experience: '5 anos',
-                    },
-                    {
-                        id:1721,
-
-                        nome: 'Carlos Silveira',
-                        experience: '5 anos',
-                    },
-                    {
-                        id:199829,
-
-                        nome: 'Carlos Silveira',
-                        experience: '5 anos',
-                    },
-                    {
-                        id:178222121,
-                        nome: 'Carlos Silveira',
-                        experience: '5 anos',
-                    },
-                ]
+                let path = ''
+                for (let i = 0; i < data.length; i++){
+                    if (data[i]['id'] == id) {
+                        path = data[i]['foto_perfil_path']
+                    }
+                }
+                let image = await this.$store.dispatch('getImage', path);
+                return image
             }
         }
 }

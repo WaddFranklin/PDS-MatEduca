@@ -10,6 +10,8 @@ const routes = [
   { path: '/', component: () => import('../Views/HomeView.vue') },
   { path: '/professor/:id',name:'professor', component: () => import('../Views/PerfilPublico.vue') },
   { path: '/aluno/:id',name:'aluno', component: () => import('../Views/PerfilAluno.vue') },
+  { path: '/registroProfessor',name:'registroProfessor', component: () => import('../Views/RegisterProfessor.vue') },
+  { path: '/cadastroCompleto',name:'cadastroCompleto', component: () => import('../Views/CadastroCompleto.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option

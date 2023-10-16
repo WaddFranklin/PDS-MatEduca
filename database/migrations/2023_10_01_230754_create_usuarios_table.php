@@ -16,28 +16,30 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('login_id')->constrained(
-                'logins',
-                'id'
-            );
+            #$table->foreignId('login_id')->constrained(
+            #    'logins',
+            #    'id'
+            #);
             $table->foreignId('usuario_tipo_id')->constrained(
                 'usuario_tipos',
                 'id'
             );
-            $table->foreignId('usuario_id')->constrained(
-                'telefones',
-                'id'
-            );
+            #$table->foreignId('usuario_id')->constrained(
+            #    'telefones',
+            #    'id'
+            #);
             $table->string('nome', 255);
             $table->string('sobrenome', 255);
+            $table->string('experiencia', 255);
             $table->string('foto_perfil_path', 255);
             $table->string('foto_capa_path', 255);
             $table->string('titulo', 255);
+            $table->string('senha', 16);
             $table->text('bio');
             $table->text('curriculo');
-            $table->date('data_nascimento');
+            #$table->date('data_nascimento');
             $table->string('email', 128);
-            $table->string('cpf', 11);
+            #$table->string('cpf', 11);
             $table->timestamps();
         });
     }

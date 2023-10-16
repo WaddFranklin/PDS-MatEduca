@@ -6,12 +6,41 @@
 
 <script>
 export default {
-
+    props: ['id'],
     data(){
         return{
-            subjects: ['Álgebra', 'Geometria', 'Equação do 2º grau'],
+            subjects: '',
+            id: this.id
         }
-    }
+    },
+    async mounted(){
+            let result = await this.$store.dispatch('getSpeciality');
+            let specialityNames = await this.$store.dispatch('getSpecialityNames');
+            
+            let speciality_ids = []
+            let subjects_temp = []
+            if (result) {
+                for(let i = 0; i < result.data.length; i++)
+                {   
+                    if (result.data[i]['usuario_id'] == this.id) {
+                        speciality_ids.push(result.data[i]['especialidade_id'])
+                    }
+                }
+
+                for(let i = 0; i < speciality_ids.length; i++)
+                {   
+                    for(let j = 0; j < specialityNames.data.length; j++)
+                    {   
+                        if(specialityNames.data[j]['id'] == speciality_ids[i]){
+                            subjects_temp.push(specialityNames.data[j]['descricao'])
+                        }
+                    }
+                }
+                this.subjects = subjects_temp
+            } else {
+                alert('Falha no login. Verifique suas credenciais.');
+            }
+        }
 }
 </script>
 

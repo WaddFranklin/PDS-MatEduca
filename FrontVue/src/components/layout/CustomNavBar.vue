@@ -19,7 +19,7 @@
 
                     </li>
                     <li class="navs-items" v-if="!this.isAuthenticated">
-                        <router-link to="/cadastro" id="cadastro" class="nav-link">Cadastrar-se</router-link>
+                        <router-link @click.stop.prevent="showModalRegister()" to="#" class="nav-link">Cadastrar-se</router-link>
                     </li>
                     <li class="navs-items" v-if="isAuthenticated">
                         <div style="display: flex; align-items: center;">
@@ -40,12 +40,14 @@
             </navbar>
         </div>
     </header>
-    <FormLogin v-if="isVisible" @show-Modal="showModal" :modal="showModal"/>
+    <FormLogin v-if="isVisible" @show-Modal="showModal" @show-Modal-Register="showModalRegister" :modal="showModal"/>
+    <RegisterForm v-if="isVisibleRegister" @show-Modal-Register="showModalRegister" @show-Modal-Login="showModalLogin" :modal="showModalRegister"/>
 </div>
 </template>
 
 <script>
 import FormLogin from './FormLogin.vue'
+import RegisterForm from './RegisterForm.vue';
 import { mapGetters } from 'vuex';
 export default {
     computed: {
@@ -54,16 +56,27 @@ export default {
     mounted() {
         this.setType()
     },
-    components: { FormLogin },
+    components: { FormLogin, RegisterForm },
         name: 'CustomNavBar',
         data(){
             return{
                 isVisible: false,
+                isVisibleRegister: false,
                 type: ''
             }
         },
         methods:{
             showModal(){
+                this.isVisible = !this.isVisible;
+                this.setType()
+            },
+            showModalRegister(){
+                if (this.isVisible)
+                    this.isVisible = !this.isVisible;
+                this.isVisibleRegister = !this.isVisibleRegister;
+            },
+            showModalLogin(){
+                this.isVisibleRegister = !this.isVisibleRegister;
                 this.isVisible = !this.isVisible;
                 this.setType()
             },

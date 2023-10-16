@@ -3,23 +3,24 @@
 
         <div class="resume-up">
 
-            <p class="resume-text">{{ resume }}</p>
+            <p class="resume-text">{{ tutor.bio }}</p>
 
-            <p class="register-time">{{ registered }}</p>
+            <p class="register-time">{{ tutor.updated_at }}</p>
         </div>
     <div class = 'divider'></div>
 
     <div class="resume-middle">
         <p>Especialidades</p>
 
-        <listsubjects/>
+        <listsubjects :id="tutor.id"/>
     </div>
 
     <divider/>
 
     <div class="resume-down">
         <p class = "curr">Curriculum</p>
-        <p v-for= "(text,index) in curriculum" :key="index">{{ text }}</p>
+        <p class="resume-text">{{tutor.curriculo}}</p>
+        <!--<p v-for= "(text,index) in " :key="index">{{ text }}</p> -->
     </div>
 </div>
 </template>
@@ -33,15 +34,26 @@ export default {
     data(){
 
         return{
-            resume: 'Acredito em tornar a matemática acessível e interessante para todos os alunos. Minhas aulas são interativas e focam em aplicar conceitos a situações do cotidiano.',
-
-            registered: 'Inscrita desde 20 de fevereiro de 2019',
-
-            subjects: ['Álgebra', 'Geometria'],
-
-            curriculum: ['Graduanda em Engenharia Elétrica pela Universidade Federal de Minas Gerais', 'Técnico em Eletrotécnica no Instituto Federal de Minas Gerais'],
+            tutor: {}
         }
-    }
+    },
+
+    async mounted(){
+        let id = window.location.href.split('/')
+        id = parseInt(id[id.length-1])
+
+        let result = await this.$store.dispatch('getTutors');
+        if (result) {
+            for (let i = 0; i < result.data.length; i++){
+                if (result.data[i]['id'] == id){
+                this.tutor = result.data[i]
+                console.log(this.tutor)
+                }
+            }
+        } else {
+            alert('Falha no login. Verifique suas credenciais.');
+        }
+    },
 }
 </script>
 
@@ -59,7 +71,9 @@ export default {
     border: 1px solid #D9D9D9;
 }
 .resume-text{
-
+    word-wrap: break-word;
+    max-width: 625px;
+    overflow: auto;
     color: #1E1E1E;
     font-family: Helvetica Neue;
     font-size: 20px;

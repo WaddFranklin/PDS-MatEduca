@@ -31,7 +31,7 @@
       <div class="another-options">
         <ul class="options-card-login">
         <li>
-          <a href="/">Cadastrar-se</a>
+          <router-link @click="$emit('showModalRegister')" to="#" class="nav-link">Cadastrar-se</router-link>
         </li>
         <li>
           <a href="/">Esqueci a minha senha</a>
@@ -57,7 +57,7 @@ export default {
     async login() {
       const userData = {
         email: this.email,
-        password: this.password,
+        senha: this.password,
       };    
 
       // Chame a ação loginUser do Vuex

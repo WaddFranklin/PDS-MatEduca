@@ -9,6 +9,7 @@ axios.create({
   headers: {
     accept: 'application/json',
     'content-type': 'application/json',
+    'content-type': 'multipart/form-data',
   },
 });
 
@@ -34,7 +35,6 @@ const store = new Vuex.Store({
       try {
         const response = await apiService().post('/api', userData);
 
-        console.log(response)
         if (response.status == 200) {
             commit('SET_AUTHENTICATED', true);
             commit('SET_USER', response.data);
@@ -49,6 +49,76 @@ const store = new Vuex.Store({
             console.error(error);
       }
     },
+    async createTutor({ commit }, tutorData) {
+      try {
+        const response = await apiService().post('/api/tutor', tutorData);
+        if (response.status == 200) {
+          return true
+        } else {
+          return false
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+    async getTutors({commit}) {
+      try {
+        const response = await apiService().get('/api/tutores');
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+    async getSpeciality() {
+      try {
+        const response = await apiService().get('/api/especialidades');
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+    async getSpecialityNames() {
+      try {
+        const response = await apiService().get('/api/especialidadesNomes');
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+    async getImage(context, src) {
+      try {
+        const obj = {
+          url: src
+        }
+        const response = await apiService().post('/api/imagem/', obj);
+        
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    }
+
   },
   getters: {
         // Defina getters para acessar o estado de login

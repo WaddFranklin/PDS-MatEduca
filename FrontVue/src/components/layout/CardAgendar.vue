@@ -18,7 +18,7 @@
 
                 <p>Especialidades</p>
 
-                <listsubjects/>
+                <listsubjects :id="tutor.id"/>
             </div>
             <divider/>
             <div class="marcar-down">
@@ -48,6 +48,7 @@ export default {
 
             isLogged: false,
             isVisible: false,
+            tutor: {}
         }
     },
     methods:{
@@ -59,7 +60,25 @@ export default {
 
                 this.isVisible = true;
             },
-    }
+    },
+    async mounted(){
+        let id = window.location.href.split('/')
+        id = parseInt(id[id.length-1])
+
+        let result = await this.$store.dispatch('getTutors');
+        if (result) {
+            for (let i = 0; i < result.data.length; i++){
+                if (result.data[i]['id'] == id){
+                this.tutor = result.data[i]
+                console.log(this.tutor)
+                }
+            }
+        } else {
+            alert('Falha no login. Verifique suas credenciais.');
+        }
+    },
+
+    
 }
 
 </script>

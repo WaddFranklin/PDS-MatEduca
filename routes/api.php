@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\usersController;
+use App\Http\Controllers\Users\TutorController;
+use App\Http\Controllers\Users\SpecialityController;
+use App\Http\Controllers\ImageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/', [usersController::class, "index"]);
+
+Route::post('/tutor', [TutorController::class, "index"]);
+
+Route::get('/tutores', [TutorController::class, "getTutores"]);
+
+Route::get('/especialidades', [TutorController::class, "getTutoresSpeciality"]);
+
+Route::get('/especialidadesNomes', [TutorController::class, "getTutoresSpecialityNames"]);
+
+Route::post('/imagem', [ImageController::class, "retornarImagem"]);
+

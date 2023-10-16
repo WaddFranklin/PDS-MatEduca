@@ -17,14 +17,20 @@ class usersController extends Controller
         try {
             // Crie uma instância do modelo Usuario e atribua os valores aos campos
             $usuario = new Usuario();
-            $usuario->login_id = 1;
-            $usuario->telefone_id = 1;
-            $usuario->nome = "LUIZ";
-            $usuario->data_nascimento = "2002-01-5";
+            #$usuario->login_id = 1;
+            $usuario->nome = "Luiz";
+            $usuario->sobrenome = "Felipe";
             $usuario->email = $data['email'];
-            $usuario->cpf = "12345657966";
+            $usuario->foto_perfil_path = "";
+            $usuario->foto_capa_path = "";
+            $usuario->titulo = '';
+            $usuario->experiencia = '';
+            $usuario->bio = '';
+            $usuario->curriculo = '';
+            $usuario->senha = $data['senha'];
 
-            $usuario->usuario_tipo_id = 1;
+
+            $usuario->usuario_tipo_id = 2;
     
             // Salve o usuário no banco de dados
             $usuario->save();

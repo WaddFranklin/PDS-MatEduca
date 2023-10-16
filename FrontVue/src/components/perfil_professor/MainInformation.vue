@@ -1,21 +1,34 @@
 <template>
   <section class = "Informations-about">
     <div class="main-information">
-        <h2>{{ name }}</h2>
-        <h4>{{ graduated }}</h4>
+        <h2>{{ tutor.nome }}</h2>
+        <h4>{{ tutor.titulo }}</h4>
     </div>
 </section>
 </template>
 
 <script>
 export default {
-
     data(){
-        return{
-            name: 'Juliana Ribeiro',
-            graduated: 'Graduanda em Engenharia Civil - UFMG'
-        }
+    return{
+        tutor: {}
     }
+  },
+  async mounted(){
+      let id = window.location.href.split('/')
+      id = parseInt(id[id.length-1])
+
+      let result = await this.$store.dispatch('getTutors');
+      if (result) {
+          for (let i = 0; i < result.data.length; i++){
+            if (result.data[i]['id'] == id){
+              this.tutor = result.data[i]
+            }
+          }
+      } else {
+          alert('Falha no login. Verifique suas credenciais.');
+      }
+  },
 }
 </script>
 
