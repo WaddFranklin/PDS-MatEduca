@@ -196,7 +196,7 @@ export default {
 }
 
 .assunto-selecao p {
-    color: gray;
+    color: grey;
 }
 
 .assunto-selecao input[type="text"] {
@@ -252,7 +252,7 @@ export default {
 
 .info-adicional {
     font-size: 0.8em;
-    color: gray;
+    color: grey;
     margin-left: 10px;
 }
 
