@@ -29,11 +29,9 @@
 
             </div>
             <button @click="viewCard" class="agendar" type ="button">Agendar Aula com Juliana</button>
-            <div v-if="viewCard === true">
-                <Etapas>
-                </Etapas>
-            </div>
-            <FormLogin v-if= "!isLogged && isVisible" @show-Modal="showModal"/>
+            <Etapas v-if= "this.isAuthenticated && isVisible"/>
+
+            <FormLogin v-if= "!this.isAuthenticated && isVisible" @show-Modal="showModal"/>
         </div>
     </section>
 </template>
@@ -43,9 +41,12 @@ import Divider from './Divider.vue'
 import FormLogin from './FormLogin.vue'
 import Listsubjects from './Listsubjects.vue'
 import Etapas from "@/components/perfil_professor/Etapas.vue";
+import { mapGetters } from 'vuex';
 export default {
   components: {Etapas, Listsubjects, Divider, FormLogin },
-
+  computed: {
+        ...mapGetters(['isAuthenticated', 'user']),
+    },
     data(){
 
         return{
@@ -58,11 +59,12 @@ export default {
     methods:{
             showModal(){
 
-                this.isVisible = !this,this.isVisible;
+                this.isVisible = !this.isVisible;
             },
             viewCard(){
 
                 this.isVisible = true;
+
             },
     },
     async mounted(){

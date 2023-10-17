@@ -49,7 +49,7 @@
             <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
         </div>
 
-        <<div v-if="etapaAtual === 3" class="etapa">
+        <div v-if="etapaAtual === 3" class="etapa">
         <div class="cabecalho">
             <p class="titulo-etapa">Agendar Aula</p>
             <div class="informacoes">
@@ -106,7 +106,7 @@
 
 <script>
 export default {
-    name: Etapas,
+    name: 'Etapas',
     data() {
         return {
             usuarioAutenticado: false,

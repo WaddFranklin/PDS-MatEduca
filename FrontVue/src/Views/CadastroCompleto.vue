@@ -32,8 +32,8 @@ import Links from '../components/layout/Links.vue'
 import Classes from '../components/aluno/Classes.vue'
 import { Icon } from '@iconify/vue';
 export default {
-  components: { 
-    CustomNavBar, 
+  components: {
+    CustomNavBar,
     CustomFooter,
     Links,
     Classes,
@@ -154,7 +154,7 @@ export default {
   justify-content: center;
   padding: 24px;
   gap: 9.14px;
-  
+
   margin-top: 4%;
 
   width: 112px;
@@ -163,10 +163,6 @@ export default {
   /* Primary/50 */
   background: #F2F6FB;
   border-radius: 285.714px;
-}
-
-.button-complete{
-
 }
 
 .complete-text{
