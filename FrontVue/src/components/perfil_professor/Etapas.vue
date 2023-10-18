@@ -1,5 +1,5 @@
 <template>
-    <div v-if="usuarioAutenticado" class="etapas">
+    <div v-if="this.isAuthenticated" class="etapas">
         <div v-if="etapaAtual === 1" class="etapa">
             <div class="cabecalho">
                 <p class="titulo-etapa">Agendar Aula</p>
@@ -105,8 +105,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: 'Etapas',
+    computed: {
+        ...mapGetters(['isAuthenticated', 'user']),
+    },
     data() {
         return {
             usuarioAutenticado: false,
@@ -134,7 +138,7 @@ export default {
     },
     methods: {
         redirectToProfessor() {
-            this.$router.push('perfil');
+            this.$router.push('/');
         },
         proximo() {
             // Avança para a próxima etapa
