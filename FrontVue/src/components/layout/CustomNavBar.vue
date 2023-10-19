@@ -32,7 +32,7 @@
                                 </router-link>
                                 <p style="margin-top: 5px; font-size: 11px">{{type}}</p>
                             </div>
-                            <img
+                            <img @click="showModalOptionsPerfil"
                                 src="../../assets/img/perfil.png"
                                 alt="Imagem do usuário"
                                 style="border-radius: 50%; width: 48px; height: 48px; margin-left: 10px;"
@@ -45,6 +45,7 @@
     </header>
     <FormLogin v-if="isVisible" @show-Modal="showModal" @show-Modal-Register="showModalRegister" :modal="showModal"/>
     <RegisterForm v-if="isVisibleRegister" @show-Modal-Register="showModalRegister" @show-Modal-Login="showModalLogin" :modal="showModalRegister"/>
+    <PerfilOptionsCard v-if="areOptionsVisible"/>
 </div>
 </template>
 
@@ -52,6 +53,7 @@
 import FormLogin from './FormLogin.vue'
 import RegisterForm from './RegisterForm.vue';
 import { mapGetters } from 'vuex';
+import PerfilOptionsCard from './PerfilOptionsCard.vue';
 export default {
     computed: {
         ...mapGetters(['isAuthenticated', 'user']),
@@ -59,12 +61,13 @@ export default {
     mounted() {
         this.setType()
     },
-    components: { FormLogin, RegisterForm },
+    components: { FormLogin, RegisterForm, PerfilOptionsCard },
         name: 'CustomNavBar',
         data(){
             return{
                 isVisible: false,
                 isVisibleRegister: false,
+                areOptionsVisible: false,
                 type: ''
             }
         },
@@ -82,6 +85,10 @@ export default {
                 this.isVisibleRegister = !this.isVisibleRegister;
                 this.isVisible = !this.isVisible;
                 this.setType()
+            },
+            showModalOptionsPerfil(){
+
+                this.areOptionsVisible = !this.areOptionsVisible;
             },
             setType(){
                 const user = JSON.parse(JSON.stringify(this.user))
