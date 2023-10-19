@@ -157,7 +157,7 @@ export default {
     .informacoes-experience li{
 
         display: inline-flex;
-        padding: 5px 15px;
+        padding: 5px 0px;
         border-radius: 4px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
