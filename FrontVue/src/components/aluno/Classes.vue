@@ -2,9 +2,9 @@
   <section class = "class">
     <h1>Próximas aulas</h1>
     <div class="classes">
-        <div v-if="flag_classes">
-
-        </div>
+        <section  class="aproved-requisitions" v-if="flag_classes">
+            <card-student-classes/>
+        </section>
         <div class="no-item" v-if="!flag_classes">
             <div class="item-img">
                 <img
@@ -28,9 +28,12 @@
         </div>
 
         <div class="hist">
-            <h4>Histórico de Aulas</h4>
+            <h4 class="hist-classes-title">Histórico de Aulas</h4>
             <div class="classes-hist" v-if="!have_classes">
                 <a class="classes-hist-a">Nenhuma aula realizada</a>
+            </div>
+            <div class="classes-hist" v-if="have_classes">
+                <SimpleSearchBar/>
             </div>
         </div>
     </div>
@@ -39,7 +42,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import CardStudentClasses from '../layout/CardStudentClasses.vue';
+
+import Divider from '../layout/Divider.vue';
+import LinkMeetModal from '../layout/LinkMeetModal.vue';
+import SimpleSearchBar from '../layout/SimpleSearchBar.vue';
 export default {
+  components: { Divider, LinkMeetModal, SimpleSearchBar, CardStudentClasses },
     computed: {
         ...mapGetters(['isAuthenticated', 'user']),
     },
@@ -53,14 +62,35 @@ export default {
     data(){
         return{
             classes: [],
-            flag_classes: false,
-            have_classes: false
+            flag_classes: true,
+            have_classes: true,
+            isModalVisible: false,
+            confirmedClasses: [{
+                teacherName: 'Juliana Ribeiro',
+                reservationTime: '29 de agosto de 2023 às 14:00',
+                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
+                studentAutoAvaliation: [
+                    { subject: 'Equação do 2º grau', avaliation: 1},
+                    { subject: 'Geometria Analítica', avaliation: 4}]
+            },{
+                teacherName: 'Juliana Ribeiro',
+                reservationTime: '29 de agosto de 2023 às 14:00',
+                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
+                studentAutoAvaliation: [
+                    { subject: 'Equação do 2º grau', avaliation: 1},
+                    { subject: 'Geometria Analítica', avaliation: 4}]
+            }]
+        }
+    },
+    methods:{
+        showModal(){
+            this.isModalVisible = !this.isModalVisible
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 section.class{
     display: flex;
     flex-direction: column;
@@ -68,7 +98,7 @@ section.class{
 }
 .p {
     padding-right: 10px;
-    
+
 }
 div.links{
     display: flex;
@@ -125,7 +155,14 @@ div.links{
 .hist{
     margin-top: 5%;
 }
-
+.hist-classes-title{
+    color: var(--neutral-600, #14161F);
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
 .item-img{
     display: flex;
     flex-direction: row;
