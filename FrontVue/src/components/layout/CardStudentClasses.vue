@@ -70,7 +70,7 @@ export default {
     background: #D9D9D9;
 }
 .meet-link-btn{
-    width: 50%;
+    width: fit-content;
     display: flex;
     padding: 16px 24px;
     height: fit-content;
@@ -82,6 +82,7 @@ export default {
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 21px */
+    text-align: center;
     border-radius: 4px;
     border: 1px solid #D9D9D9;
     border-radius: 8px;
@@ -136,7 +137,7 @@ div.cards-class-buttons{
     padding-inline: 20px;
 }
 .class-btn-icons i{
-    margin-right: 50px;
+    margin-right: 30px;
 }
 .bi-calendar2-x{
     color: #8B0A03;
