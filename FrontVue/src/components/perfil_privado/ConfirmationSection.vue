@@ -1,5 +1,5 @@
 <template>
-    <section class="class-confimation">
+    <section class="class-confirmation">
         <h2 class="month-title">Agosto</h2>
         <divider/>
         <ul class="waiting-list">
@@ -62,7 +62,7 @@ export default {
                 timeStampOfRequisitionClass: '29 de agosto de 2023 às 14:00',
                 studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
                 studentAutoAvaliation: [{
-                    subject:'Equação do segundo grau',
+                    subject:'Equação do 2º grau',
                     autoAvaliation: 1
                 },
                 {
@@ -91,12 +91,12 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
 .class-confirmation{
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
 }
 .month-title{
 
@@ -248,7 +248,7 @@ export default {
     font-family: Helvetica Neue;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: normal;
 }
 .student-requesition-information-down th{
