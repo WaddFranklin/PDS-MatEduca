@@ -1,7 +1,7 @@
 <template>
   <section class = "Informations-about">
     <div class="main-information">
-        <h2>{{ tutor.nome }}</h2>
+        <h2>{{ tutor.nome + ' ' + tutor.sobrenome}}</h2>
         <h4>{{ tutor.titulo }}</h4>
     </div>
 </section>
