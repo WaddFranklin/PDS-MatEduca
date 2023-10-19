@@ -29,7 +29,7 @@
 
             </div>
             <button @click="viewCard" class="agendar" type ="button">Agendar Aula com Juliana</button>
-            <Etapas v-if= "this.isAuthenticated && isVisible"/>
+            <Etapas :viewCardFunc="this.showModal" :tutor="this.tutor" v-if= "this.isAuthenticated && isVisible"/>
 
             <FormLogin v-if= "!this.isAuthenticated && isVisible" @show-Modal="showModal"/>
         </div>
@@ -58,13 +58,10 @@ export default {
     },
     methods:{
             showModal(){
-
                 this.isVisible = !this.isVisible;
             },
             viewCard(){
-
                 this.isVisible = true;
-
             },
     },
     async mounted(){

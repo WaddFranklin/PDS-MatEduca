@@ -678,21 +678,32 @@ export default {
       let horarioTarde =  [];
       let horarioNoite =  [];
 
+
+      let diaHoras = ["8:00", "9:00", "10:00", "11:00", "12:00"]
+      let tardeHoras = ["13:00", "14:00", "15:00", "16:00", "17:00"]
+      let noiteHoras = ["18:00", "19:00", "20:00", "21:00"]
+
       for (const day in this.selectedDaysMorning) {
         if (this.selectedDaysMorning[day]) {
-          horarioDia.push({"day": this.getNextDayDate(day), "hour": "10:00"});
+          for (const hour in diaHoras) {
+            horarioDia.push({"day": this.getNextDayDate(day), "hour": diaHoras[hour]});
+          }
         }
       }
 
       for (const day in this.selectedDaysAfternoon) {
         if (this.selectedDaysAfternoon[day]) {
-          horarioTarde.push({"day": this.getNextDayDate(day), "hour": "13:00"});
+          for (const hour in tardeHoras) {
+            horarioTarde.push({"day": this.getNextDayDate(day), "hour": tardeHoras[hour]});
+          }
         }
       }
 
       for (const day in this.selectedDaysNight) {
         if (this.selectedDaysNight[day]) {
-          horarioNoite.push({"day": this.getNextDayDate(day), "hour": "20:00"});
+          for (const hour in noiteHoras) {
+            horarioNoite.push({"day": this.getNextDayDate(day), "hour": noiteHoras[hour]});
+          }
         }
       }
 

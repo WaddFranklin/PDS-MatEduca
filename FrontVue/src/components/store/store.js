@@ -117,6 +117,20 @@ const store = new Vuex.Store({
       } catch (error) {
             console.error(error);
       }
+    },
+
+    async getHorarios() {
+      try {
+        const response = await apiService().get('/api/horarios');
+        
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
     }
 
   },

@@ -33,5 +33,7 @@ Route::get('/especialidades', [TutorController::class, "getTutoresSpeciality"]);
 
 Route::get('/especialidadesNomes', [TutorController::class, "getTutoresSpecialityNames"]);
 
+Route::get('/horarios', [TutorController::class, "getHorarios"]);
+
 Route::post('/imagem', [ImageController::class, "retornarImagem"]);
 

@@ -135,4 +135,14 @@ class TutorController extends Controller
             'data' => $specilidades
         ]);
     }
+
+    public function getHorarios(Request $request)
+    {
+        $horarios = Horario::all()->toArray();
+
+        return response()->json([
+            'message' => 'Horários recuperados com sucesso',
+            'data' => $horarios
+        ]);
+    }
 }

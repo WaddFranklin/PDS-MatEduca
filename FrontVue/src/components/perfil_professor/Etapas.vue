@@ -4,7 +4,7 @@
             <div class="cabecalho">
                 <p class="titulo-etapa">Agendar Aula</p>
                 <div class="informacoes">
-                    <p class="nome-professor">Juliana Ribeiro</p>
+                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
                     <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="horarios">
-                <div v-for="horario in horarios" :key="horario" class="horario">
+                <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario">
                     {{ horario }}
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="cabecalho">
                 <p class="titulo-etapa">Agendar Aula</p>
                 <div class="informacoes">
-                    <p class="nome-professor">Juliana Ribeiro</p>
+                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
                     <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                 </div>
                 <p>Qual o assunto que deseja estudar?</p>
@@ -107,6 +107,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
+    props: ['viewCardFunc', 'tutor'],
     name: 'Etapas',
     computed: {
         ...mapGetters(['isAuthenticated', 'user']),
@@ -115,9 +116,18 @@ export default {
         return {
             usuarioAutenticado: false,
             etapaAtual: 1,
-            diasSemana: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            diasSemana: [],
             diaSelecionado: null,
-            horarios: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            currentTutor: {},
+            horarios: {
+                "Seg": [],
+                "Ter": [],
+                "Qua": [],
+                "Qui": [],
+                "Sex": [],
+                "Sáb": [],
+                "Dom": []
+            },
             pesquisaAssunto: '',
             areas: [
                 {
@@ -136,9 +146,33 @@ export default {
 
         };
     },
+    async mounted(){
+        const user = JSON.parse(JSON.stringify(this.user))
+        this.currentTutor = JSON.parse(JSON.stringify(this.tutor))
+
+        let result = await this.$store.dispatch('getHorarios');
+        if (result) {
+            for (let i = 0; i < result.data.length; i++){
+                if (result.data[i]['usuario_id'] == this.currentTutor['id']) {
+                    const data = new Date(result.data[i]['data']);
+                    let diaDaSemana = data.toLocaleDateString('pt-BR', { weekday: 'long' });
+                    diaDaSemana = diaDaSemana.charAt(0).toUpperCase() + diaDaSemana.slice(1)
+                    diaDaSemana = diaDaSemana.slice(0,3)
+
+                    if (!this.diasSemana.includes(diaDaSemana)) {
+                        this.diasSemana.push(diaDaSemana)
+                    }
+
+                    this.horarios[diaDaSemana].push(result.data[i]['hora'])
+                }
+            }
+        } else {
+            alert('Falha no login. Verifique suas credenciais.');
+        }
+    },
     methods: {
         redirectToProfessor() {
-            this.$router.push('/');
+            this.viewCardFunc()
         },
         proximo() {
             // Avança para a próxima etapa
@@ -149,6 +183,9 @@ export default {
         },
         confirmarAgendamento() {
             console.log('Agendamento confirmado:');
+        },
+        getHorarios() {
+            
         }
     }
 };
