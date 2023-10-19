@@ -51,10 +51,9 @@ export default {
         display: inline-flex;
         width: 100%;
     }
-    li.subject-item{
+    ul.subject-list li{
         padding: 5px 0px;
         border-radius: 4px;
-        align-items: flex-start;
         margin-inline: 5px;
         margin-bottom: 5px;
         color: var(--highlight-600, #803900);
@@ -63,6 +62,6 @@ export default {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
+        text-align: center;
 }
 </style>
