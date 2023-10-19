@@ -3,16 +3,17 @@
         <h2 class="month-title">Agosto</h2>
         <divider/>
         <ul class="waiting-list">
-            <li>
+            <li v-for="(requistionClass, index) in requisitionClassExample" :key="index">
                 <section class="class-requesition">
 
                     <div class="student-requesition-information-up">
                         <div class="requesition-information-left">
-                            <h3>Nome do estudante</h3>
-                            <p>29 de agosto de 2023 às 14:00</p>
+                            <h3>{{ requistionClass.studentName }}</h3>
+                            <p>{{ requistionClass.timeStampOfRequisitionClass }}</p>
                         </div>
                         <div class="requesition-information-right">
                             <button @click="Recuse" v-if="!isAproved && !isRecused" class="negate-btn" type="button"> <i class="bi bi-x-circle-fill"></i>Recusar</button>
+                            <div class="msg-denial-class" v-if="isRecused"><p>Aula Recusada</p></div>
 
                             <button @click="Aprove" v-if="!isAproved && !isRecused" class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
 
@@ -28,18 +29,14 @@
                                 <th>Assuntos</th>
                                 <th>Nível de Conhecimento</th>
                             </tr>
-                            <tr>
-                                <td>Equação do segundo grau</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Algebra</td>
-                                <td>3</td>
+                            <tr v-for="(answersAutoAvaliation, index) in requistionClass.studentAutoAvaliation" :key="index">
+                                <td>{{ answersAutoAvaliation.subject }}</td>
+                                <td>{{ answersAutoAvaliation.autoAvaliation }}</td>
                             </tr>
 
                         </table>
                         <p class="majority-problems">Maiores Dificuldades</p>
-                        <p>{{ studentDifficult }}</p>
+                        <p>{{requistionClass.studentDifficult }}</p>
                     </div>
                 </section>
             </li>
@@ -56,10 +53,26 @@ export default {
 
   data(){
     return{
-        studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
         isAproved: false,
         isRecused: false,
-        isModalVisible:false
+        isModalVisible:false,
+        requisitionClassExample: [
+            {
+                studentName: 'Nome do estudante',
+                timeStampOfRequisitionClass: '29 de agosto de 2023 às 14:00',
+                studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
+                studentAutoAvaliation: [{
+                    subject:'Equação do segundo grau',
+                    autoAvaliation: 1
+                },
+                {
+                    subject:'Algebra',
+                    autoAvaliation: 3
+                },
+            ]
+
+            },
+        ]
     }
   },
   methods:{
@@ -263,5 +276,22 @@ export default {
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 21px */
+}
+.msg-denial-class{
+
+    width: 100%;
+    background: var(--negative-50, #FFF3F2);
+    text-align: center;
+    height: fit-content;
+    align-items: center;
+}
+.msg-denial-class p{
+
+    color: red;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
 }
 </style>
