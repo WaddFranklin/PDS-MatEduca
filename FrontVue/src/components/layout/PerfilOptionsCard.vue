@@ -56,7 +56,7 @@ export default {
     right: 15px;
     display: inline-flex;
     flex-direction: column;
-    width: 280px;
+    width: fit-content;
     padding: 12px;
     align-items: flex-start;
     gap: 6px;

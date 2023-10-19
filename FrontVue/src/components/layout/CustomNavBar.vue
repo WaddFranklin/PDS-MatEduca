@@ -139,6 +139,8 @@ header{
     align-items: center;
     gap: 12px;
     margin-right: 9px;
+    position: relative;
+    right: 50px;
 }
 #navbar li{
     padding: 0px 10px;
