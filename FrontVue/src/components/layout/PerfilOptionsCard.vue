@@ -1,11 +1,22 @@
 <template>
   <div id="perfil-options-mini-menu">
+    <div v-if="userType == 2">
+        <router-link :to="'/aluno/' + userId" class="options-nav-link">
+                <p>
+                    <i class="bi bi-list-task"></i>
+                    Gerenciar Aulas
+                </p>
 
-    <div>
-        <p>
-            <i class="bi bi-list-task"></i>
-            Gerenciar Aulas
-        </p>
+        </router-link>
+    </div>
+    <div v-if="userType == 3">
+        <router-link :to="'/perfil/' + userId" class="options-nav-link">
+                <p>
+                    <i class="bi bi-list-task"></i>
+                    Gerenciar Aulas
+                </p>
+
+        </router-link>
     </div>
     <div>
         <p><i class="bi bi-person"></i>
@@ -27,13 +38,13 @@ export default {
     data(){
         return{
 
-            pathTo : null,
             userType: null,
+            userId: null,
         }
     },
     props:{
-        pathTo: String,
         userType: Number,
+        userId: Number,
     }
 }
 </script>
@@ -66,6 +77,10 @@ export default {
 }
 .exit-option{
     color: var(--negative-600, #8B0A03);
+}
+.options-nav-link{
+    text-decoration: none;
+    color: black;
 }
 
 </style>

@@ -24,13 +24,8 @@
                     <li class="navs-items" v-if="isAuthenticated">
                         <div style="display: flex; align-items: center;">
                             <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                <router-link v-if="user.data.usuario_tipo_id == 2" :to="'/aluno/' + user.data.id" class="nav-link">
-                                    <a style="font-size: 12px">{{ user.data.nome }}</a>
-                                </router-link>
-                                <router-link v-if="user.data.usuario_tipo_id == 3" :to="'/perfil/' + user.data.id" class="nav-link">
-                                    <a style="font-size: 12px">{{ user.data.nome }}</a>
-                                </router-link>
-                                <p style="margin-top: 5px; font-size: 11px">{{type}}</p>
+                                <p class="user-name">{{ user.data.nome }}</p>
+                                <p  class="career" >{{type}}</p>
                             </div>
                             <img @click="showModalOptionsPerfil"
                                 src="../../assets/img/perfil.png"
@@ -45,7 +40,7 @@
     </header>
     <FormLogin v-if="isVisible" @show-Modal="showModal" @show-Modal-Register="showModalRegister" :modal="showModal"/>
     <RegisterForm v-if="isVisibleRegister" @show-Modal-Register="showModalRegister" @show-Modal-Login="showModalLogin" :modal="showModalRegister"/>
-    <PerfilOptionsCard v-if="areOptionsVisible"/>
+    <PerfilOptionsCard v-if="areOptionsVisible" :userId="user.data.id" :userType="user.data.usuario_tipo_id"/>
 </div>
 </template>
 
@@ -237,11 +232,19 @@ header{
     font-weight: 500;
     line-height: normal;
 }
-.navbar-perfil-description p.career{
+p.career{
 
     color: var(--neutral-300, #5E6475);
     font-family: Helvetica Neue;
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+p.user-name{
+    color: var(--primary-500, #003773);
+    font-family: Helvetica Neue;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
