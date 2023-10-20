@@ -37,11 +37,11 @@ section.informations-about{
     display: flex;
 }
 div.main-information{
-
+    width: fit-content;
     display: flex;
     position: relative;
     left: 23%;
-    margin: 20px;
+    margin: 20px 20px;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -53,6 +53,11 @@ div.main-information{
     font-weight: 500;
     line-height: normal;
     width: 75%;
+
+    position: relative;
+
+    top: -30px;
+    margin-inline: 15px;
 }
 .main-information h4{
     color: #787878;
@@ -62,5 +67,10 @@ div.main-information{
     font-weight: 400;
     line-height: normal;
     width: 75%;
+
+    margin: 3px 15px;
+
+    position: relative;
+    top: -40px;
 }
 </style>

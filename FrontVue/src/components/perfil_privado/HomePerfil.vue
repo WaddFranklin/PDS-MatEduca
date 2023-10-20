@@ -1,7 +1,9 @@
 <template>
-    <CustomNavBar :isLogged="userIsLogged"/>
-    <PrincipalSection/>
-    <CustomFooter/>
+    <div>
+        <CustomNavBar :isLogged="userIsLogged"/>
+        <PrincipalSection/>
+        <CustomFooter/>
+    </div>
 </template>
 
 <script>
