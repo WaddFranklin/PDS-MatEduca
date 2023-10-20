@@ -28,23 +28,27 @@
 
                 <div class = "cards-class-buttons">
                     <div class="class-btn-icons">
-                        <h2><i class="bi bi-calendar2-x"></i></h2>
+                        <h2 @click="showCancelModal"><i class="bi bi-calendar2-x"></i></h2>
                         <h2><i class="bi bi-pencil"></i></h2>
                     </div>
                     <button class="meet-link-btn"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
                 </div>
         </section>
     </li>
+    <CancelModal v-if="visibilityOfcancelModal" @show-cancel-modal="showCancelModal"/>
 </ul>
 </template>
 
 <script>
 import Divider from '../layout/Divider.vue';
+import CancelModal from './CancelModal.vue';
 export default {
-  components: { Divider },
+  components: { Divider, CancelModal },
 
     data(){
         return{
+            visibilityOfcancelModal: false,
+
             confirmedClasses: [{
                 teacherName: 'Juliana Ribeiro',
                 reservationTime: '29 de agosto de 2023 às 14:00',
@@ -60,6 +64,11 @@ export default {
                     { subject: 'Equação do 2º grau', avaliation: 1},
                     { subject: 'Geometria Analítica', avaliation: 4}]
             }]
+        }
+    },
+    methods:{
+        showCancelModal(){
+            this.visibilityOfcancelModal = !this.visibilityOfcancelModal;
         }
     }
 }
