@@ -26,7 +26,7 @@ const store = new Vuex.Store({
         state.isAuthenticated = isAuthenticated;
     },
     SET_USER(state, user) {
-        state.user = toRaw(user);
+        state.user = user;
     },
   },
   actions: {
@@ -48,6 +48,10 @@ const store = new Vuex.Store({
             commit('SET_USER', null);
             console.error(error);
       }
+    },
+    async loginLogout({ commit }) {
+      commit('SET_AUTHENTICATED', false);
+      commit('SET_USER', null);
     },
     async createTutor({ commit }, tutorData) {
       try {

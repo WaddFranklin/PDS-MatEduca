@@ -131,7 +131,7 @@ class TutorController extends Controller
         $specilidades = Especialidade::all()->toArray();
 
         return response()->json([
-            'message' => 'Tutores recuperados com sucesso',
+            'message' => 'Especialidades recuperadas com sucesso',
             'data' => $specilidades
         ]);
     }

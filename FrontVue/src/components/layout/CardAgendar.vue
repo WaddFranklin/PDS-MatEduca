@@ -77,7 +77,7 @@ export default {
                 }
             }
         } else {
-            alert('Falha no login. Verifique suas credenciais.');
+            alert('Falha ao pegar os tutores. Verifique sua conexão com o backend');
         }
     },
 

@@ -23,7 +23,7 @@
             Configurar Perfil
         </p>
     </div>
-    <div class="exit-option">
+    <div class="exit-option" @click="logout">
         <p>
             <i class="bi bi-box-arrow-in-right"></i>
             Sair
@@ -45,6 +45,14 @@ export default {
     props:{
         userType: Number,
         userId: Number,
+    },
+    methods: {
+        async logout(){
+            console.log("okoko")
+            await this.$store.dispatch('loginLogout');
+
+            this.$router.push('/')
+        }
     }
 }
 </script>

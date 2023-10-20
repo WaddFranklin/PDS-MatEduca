@@ -40,7 +40,9 @@
     </header>
     <FormLogin v-if="isVisible" @show-Modal="showModal" @show-Modal-Register="showModalRegister" :modal="showModal"/>
     <RegisterForm v-if="isVisibleRegister" @show-Modal-Register="showModalRegister" @show-Modal-Login="showModalLogin" :modal="showModalRegister"/>
-    <PerfilOptionsCard v-if="areOptionsVisible" :userId="user.data.id" :userType="user.data.usuario_tipo_id"/>
+    <div v-if="isAuthenticated">
+        <PerfilOptionsCard v-if="areOptionsVisible" :userId="user.data.id" :userType="user.data.usuario_tipo_id"/>
+    </div>
 </div>
 </template>
 

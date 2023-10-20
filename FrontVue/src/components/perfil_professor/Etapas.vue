@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="horarios">
-                <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario">
+                <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario" :class="{ 'selecionado': horaSelecionada === horario }" @click="selecionarHora(horario)">
                     {{ horario }}
                 </div>
             </div>
@@ -53,7 +53,7 @@
         <div class="cabecalho">
             <p class="titulo-etapa">Agendar Aula</p>
             <div class="informacoes">
-                <p class="nome-professor">Juliana Ribeiro</p>
+                <p class="nome-professor">{{this.currentTutor['nome']}}</p>
                 <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
             </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="cabecalho">
                 <p class="titulo-etapa">Agendar Aula</p>
                 <div class="informacoes">
-                    <p class="nome-professor">Juliana Ribeiro</p>
+                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
                     <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                 </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="cabecalho">
                 <p class="titulo-etapa">Agendar Aula - Confirmação</p>
                 <div class="informacoes">
-                    <p class="nome-professor">Juliana Ribeiro</p>
+                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
                     <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                 </div>
             </div>
@@ -118,6 +118,7 @@ export default {
             etapaAtual: 1,
             diasSemana: [],
             diaSelecionado: null,
+            horaSelecionada: null,
             currentTutor: {},
             horarios: {
                 "Seg": [],
@@ -138,7 +139,10 @@ export default {
                     nome: 'Geometria',
                     assuntos: ['Geometria Plana e espacial', 'Geometria Analítica', 'Teorema de Pitágoras']
                 },
-                // Adicione mais áreas e assuntos conforme necessário
+                {
+                    nome: 'Estatística',
+                    assuntos: ['Estatística Descritiva', 'Probabilidade', 'Inferência Estatística', 'Análise de Regressão', 'Estatística Multivariada']
+                },
             ],
             assuntosSelecionados: [],
             notasAssuntos: [],
@@ -163,12 +167,17 @@ export default {
                         this.diasSemana.push(diaDaSemana)
                     }
 
+                    if (this.diaSelecionado === null)
+                        this.diaSelecionado = diaDaSemana
+
                     this.horarios[diaDaSemana].push(result.data[i]['hora'])
                 }
             }
         } else {
             alert('Falha no login. Verifique suas credenciais.');
         }
+        
+        this.getAreas()
     },
     methods: {
         redirectToProfessor() {
@@ -186,6 +195,37 @@ export default {
         },
         getHorarios() {
             
+        },
+        selecionarHora(hora){
+            this.horaSelecionada = hora
+        },
+        async getAreas(){
+            let result = await this.$store.dispatch('getSpeciality');
+            let specialityNames = await this.$store.dispatch('getSpecialityNames');
+
+            let speciality_ids = []
+            let subjects_temp = []
+            if (result) {
+                for(let i = 0; i < result.data.length; i++)
+                {
+                    if (result.data[i]['usuario_id'] == this.currentTutor['id']) {
+                        speciality_ids.push(result.data[i]['especialidade_id'])
+                    }
+                }
+
+                for(let i = 0; i < speciality_ids.length; i++)
+                {
+                    for(let j = 0; j < specialityNames.data.length; j++)
+                    {
+                        if(specialityNames.data[j]['id'] == speciality_ids[i]){
+                            subjects_temp.push(specialityNames.data[j]['descricao'].toLowerCase())
+                        }
+                    }
+                }
+                console.log(subjects_temp)
+            } else {
+                alert('Falha na solitação das especialidades.');
+            }
         }
     }
 };
@@ -314,6 +354,11 @@ export default {
 }
 
 .dia.selecionado {
+    background-color: #003773;;
+    color: white;
+}
+
+.horario.selecionado {
     background-color: #003773;;
     color: white;
 }

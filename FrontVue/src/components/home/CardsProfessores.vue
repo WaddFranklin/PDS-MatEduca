@@ -46,13 +46,11 @@ export default {
             }
         },
         async mounted(){
-            console.log(this.professores)
             let result = await this.$store.dispatch('getTutors');
             if (result) {
-                console.log(result.data)
                 this.professores = result.data
             } else {
-                alert('Falha no login. Verifique suas credenciais.');
+                alert('Falha ao pegar os tutores. Verifique sua conexão com o backend');
             }
         },
         methods:{

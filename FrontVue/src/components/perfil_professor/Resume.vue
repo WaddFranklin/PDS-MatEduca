@@ -47,11 +47,10 @@ export default {
             for (let i = 0; i < result.data.length; i++){
                 if (result.data[i]['id'] == id){
                 this.tutor = result.data[i]
-                console.log(this.tutor)
                 }
             }
         } else {
-            alert('Falha no login. Verifique suas credenciais.');
+            alert('Falha ao pegar os tutores. Verifique sua conexão com o backend');
         }
     },
 }
