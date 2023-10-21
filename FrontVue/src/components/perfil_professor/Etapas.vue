@@ -15,7 +15,7 @@
             </div>
             <div class="horarios">
                 <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario" :class="{ 'selecionado': horaSelecionada === horario }" @click="selecionarHora(horario)">
-                    {{ horario }}
+                    {{ horario["hora"] }}
                 </div>
             </div>
             <button @click="redirectToProfessor">Cancelar</button>
@@ -130,20 +130,7 @@ export default {
                 "Dom": []
             },
             pesquisaAssunto: '',
-            areas: [
-                {
-                    nome: 'Álgebra',
-                    assuntos: ['Equações do 1º grau', 'Equações do 2º grau', 'Sistema de Equações', 'Funções e Gráficos']
-                },
-                {
-                    nome: 'Geometria',
-                    assuntos: ['Geometria Plana e espacial', 'Geometria Analítica', 'Teorema de Pitágoras']
-                },
-                {
-                    nome: 'Estatística',
-                    assuntos: ['Estatística Descritiva', 'Probabilidade', 'Inferência Estatística', 'Análise de Regressão', 'Estatística Multivariada']
-                },
-            ],
+            areas: [],
             assuntosSelecionados: [],
             notasAssuntos: [],
             maioresDificuldades: '',
@@ -151,7 +138,6 @@ export default {
         };
     },
     async mounted(){
-        const user = JSON.parse(JSON.stringify(this.user))
         this.currentTutor = JSON.parse(JSON.stringify(this.tutor))
 
         let result = await this.$store.dispatch('getHorarios');
@@ -170,7 +156,7 @@ export default {
                     if (this.diaSelecionado === null)
                         this.diaSelecionado = diaDaSemana
 
-                    this.horarios[diaDaSemana].push(result.data[i]['hora'])
+                    this.horarios[diaDaSemana].push({"hora": result.data[i]['hora'], "id": result.data[i]['id']})
                 }
             }
         } else {
@@ -190,8 +176,47 @@ export default {
         selecionarDia(dia) {
             this.diaSelecionado = dia;
         },
-        confirmarAgendamento() {
-            console.log('Agendamento confirmado:');
+        async confirmarAgendamento() {
+            const user = JSON.parse(JSON.stringify(this.user))
+
+            let result = await this.$store.dispatch('getStatus');
+            let status_type = undefined
+            for (let i = 0; i < result.data.length; i++){
+                if (result.data[i]['descricao'] === 'EM ANALISE')
+                {
+                    status_type = result.data[i]['id']
+                }
+            }
+
+            const assuntos = JSON.parse(JSON.stringify(this.assuntosSelecionados));
+            const notas = JSON.parse(JSON.stringify(this.notasAssuntos));
+
+            let notas_assuntos = []
+            for (let i = 0; i < assuntos.length; i++){
+                notas_assuntos.push({
+                    "nota": notas[i],
+                    "assunto": assuntos[i]
+                })
+            }
+
+            const send = {
+                horario_id: JSON.parse(JSON.stringify(this.horaSelecionada))['id'],
+                aluno_id: user.data.id,
+                tutor_id: this.currentTutor.id,
+                notas_Assuntos: notas_assuntos,
+                maiores_dificuldades: JSON.parse(JSON.stringify(this.maioresDificuldades)),
+                tutoria_status_id: status_type
+            }
+
+            console.log(send);
+            
+            let schedule = await this.$store.dispatch('scheduleTutoring', send);
+            console.log(schedule)
+            if (schedule) {
+                this.$router.push('/')
+            } else {
+                alert('Falha ao marcar a tutoria');
+            }
         },
         getHorarios() {
             
@@ -202,6 +227,25 @@ export default {
         async getAreas(){
             let result = await this.$store.dispatch('getSpeciality');
             let specialityNames = await this.$store.dispatch('getSpecialityNames');
+
+            const areas = [
+                {
+                    nome: 'Álgebra',
+                    assuntos: ['Equações do 1º grau', 'Equações do 2º grau', 'Sistema de Equações', 'Funções e Gráficos']
+                },
+                {
+                    nome: 'Geometria',
+                    assuntos: ['Geometria Plana e espacial', 'Geometria Analítica', 'Teorema de Pitágoras']
+                },
+                {
+                    nome: 'Estatística',
+                    assuntos: ['Estatística Descritiva', 'Probabilidade', 'Inferência Estatística', 'Análise de Regressão', 'Estatística Multivariada']
+                },
+                {
+                    nome: 'Matrizes e Determinantes',
+                    assuntos: ['Operações com Matrizes', 'Determinantes e Regra de Cramer', 'Matrizes Inversas']
+                }
+            ]
 
             let speciality_ids = []
             let subjects_temp = []
@@ -222,7 +266,17 @@ export default {
                         }
                     }
                 }
-                console.log(subjects_temp)
+
+
+                for(let i = 0; i < areas.length; i++)
+                {
+                    let name = areas[i]['nome'].toLowerCase();
+
+                    if (subjects_temp.includes(name)) {
+                        this.areas.push(areas[i])
+                    }
+                }
+
             } else {
                 alert('Falha na solitação das especialidades.');
             }

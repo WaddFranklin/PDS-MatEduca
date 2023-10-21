@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\UsuarioEspecialidade;
 use App\Models\Especialidade;
+use App\Models\TutoriaStatus;
 use App\Models\Horario;
 use Illuminate\Support\Facades\DB;
+
 
 class TutorController extends Controller
 {
@@ -133,6 +135,16 @@ class TutorController extends Controller
         return response()->json([
             'message' => 'Especialidades recuperadas com sucesso',
             'data' => $specilidades
+        ]);
+    }
+
+    public function getTutoriaStatus(Request $request)
+    {
+        $status = TutoriaStatus::all()->toArray();
+
+        return response()->json([
+            'message' => 'Status retornados com sucesso',
+            'data' => $status
         ]);
     }
 

@@ -65,6 +65,20 @@ const store = new Vuex.Store({
             console.error(error);
       }
     },
+
+    async scheduleTutoring({ commit }, scheduleData) {
+      try {
+        const response = await apiService().post('/api/tutoria', scheduleData);
+        if (response.status == 200) {
+          return true
+        } else {
+          return false
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+    
     async getTutors({commit}) {
       try {
         const response = await apiService().get('/api/tutores');
@@ -81,6 +95,20 @@ const store = new Vuex.Store({
     async getSpeciality() {
       try {
         const response = await apiService().get('/api/especialidades');
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+    async getStatus() {
+      try {
+        const response = await apiService().get('/api/status');
 
         if (response.status == 200) {
           return response.data

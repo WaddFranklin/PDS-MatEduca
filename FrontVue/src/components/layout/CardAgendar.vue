@@ -72,8 +72,7 @@ export default {
         if (result) {
             for (let i = 0; i < result.data.length; i++){
                 if (result.data[i]['id'] == id){
-                this.tutor = result.data[i]
-                console.log(this.tutor)
+                    this.tutor = result.data[i]
                 }
             }
         } else {
