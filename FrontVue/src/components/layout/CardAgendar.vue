@@ -28,7 +28,7 @@
 
 
             </div>
-            <button @click="viewCard" class="agendar" type ="button">Agendar Aula com Juliana</button>
+            <button @click="viewCard" class="agendar" type ="button">Agendar Aula com {{tutor.nome }}</button>
             <Etapas :viewCardFunc="this.showModal" :tutor="this.tutor" v-if= "this.isAuthenticated && isVisible"/>
 
             <FormLogin v-if= "!this.isAuthenticated && isVisible" @show-Modal="showModal"/>
