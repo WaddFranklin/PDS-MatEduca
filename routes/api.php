@@ -6,6 +6,8 @@ use App\Http\Controllers\Users\usersController;
 use App\Http\Controllers\Users\TutorController;
 use App\Http\Controllers\Users\SpecialityController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\TutoriaController;
+
 
 
 /*
@@ -35,5 +37,8 @@ Route::get('/especialidadesNomes', [TutorController::class, "getTutoresSpecialit
 
 Route::get('/horarios', [TutorController::class, "getHorarios"]);
 
+Route::get('/status', [TutorController::class, "getTutoriaStatus"]);
+
 Route::post('/imagem', [ImageController::class, "retornarImagem"]);
 
+Route::post('/tutoria', [TutoriaController::class, "index"]);
