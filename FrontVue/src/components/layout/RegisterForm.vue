@@ -7,7 +7,7 @@
           <i class="bi bi-x"></i>
         </button>
       </div>
-      
+
       <div>
 
       <div class="description-two">
@@ -17,7 +17,7 @@
       <div class="frame-152">
         <button class="card-base" @click="{{ this.$router.push('/registroProfessor'); }}">
           <div class="frame-150">
-            <!-- User / User_Card_ID icon -->
+            <i class="bi bi-person-vcard"></i>
           </div>
           <div class="frame-151">
             <div class="name-type">
@@ -31,7 +31,7 @@
 
         <button class="card-base" @click="{{ this.$router.push('/registroAluno'); }}">
           <div class="frame-150">
-            <!-- User / User_02 icon -->
+            <i class="bi bi-person"></i>
           </div>
           <div class="frame-151">
             <div class="name-type">
@@ -45,10 +45,10 @@
       </div>
 
       <div class="line-5"></div>
-      
+
       </div>
       <div class="another-options-register">
-        <p>Já tem uma conta?</p> 
+        <p>Já tem uma conta?</p>
         <router-link @click="$emit('showModalLogin')" to="#" class="nav-link">Entrar</router-link>
       </div>
     </section>
@@ -198,6 +198,16 @@ height: 32px;
 
 /* Primary/400 */
 border: 2px solid #054A91;
+}
+.frame-150 .bi-person-vcard{
+
+    width: 100%;
+    font-size: 30px;
+    color: #054A91;
+}
+.frame-150 .bi-person{
+
+    font-size: 35px;
 }
 
 .frame-151 {
