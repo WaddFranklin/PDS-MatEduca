@@ -96,6 +96,9 @@ color: #5E6475;
   align-items: center;
   justify-content: center;
 }
+.another-options-register p{
+    margin-inline: 5px;
+}
 .head-register{
   margin-bottom: -10%;
   display: flex;
@@ -170,9 +173,9 @@ font-size: 25px;
 }
 
 .card-base:hover{
-  background-color: rgba(128, 128, 128, 0.5);
-  opacity: 0.9;
-  transition: 1s;
+    background: var(--primary-50, #F2F6FB);
+    opacity: 0.9;
+    transition: 1s;
 }
 
 .frame-150{

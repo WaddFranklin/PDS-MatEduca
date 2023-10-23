@@ -1,10 +1,17 @@
 <template>
+<div class="modal-overlay">
     <div v-if="this.isAuthenticated" class="etapas">
         <div v-if="etapaAtual === 1" class="etapa">
             <div class="cabecalho">
-                <p class="titulo-etapa">Agendar Aula</p>
+                <div class="head">
+                    <p class="title-login">Agendar Aula</p>
+                    <button @click="redirectToProfessor"><i class="bi bi-x"></i></button>
+                </div>
                 <div class="informacoes">
-                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                    <div>
+                        <p class="nome-professor">{{this.currentTutor['nome'] + " "+this.currentTutor['sobrenome']}}</p>
+                        <p class="graduation-teacher">{{ this.currentTutor.titulo }}</p>
+                    </div>
                     <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                 </div>
             </div>
@@ -13,13 +20,23 @@
                     {{ dia }}
                 </div>
             </div>
+            <div class="question-section">
+                <div class="questions-paragraphs">
+                    <h3 class="question-title-paragraphs">Qual o melhor horário para você?</h3>
+                    <p>Selecione uma das opções abaixo</p>
+                </div>
+                <p class="marcador-etapa">{{ this.etapaAtual }}/5</p>
+            </div>
             <div class="horarios">
                 <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario" :class="{ 'selecionado': horaSelecionada === horario }" @click="selecionarHora(horario)">
-                    {{ horario["hora"] }}
+                    {{ horario["hora"].slice(0,5) }}
                 </div>
             </div>
-            <button @click="redirectToProfessor">Cancelar</button>
-            <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
+            <div class="options-steps-card">
+                <button class="back-redirect-button" @click="redirectToProfessor">Cancelar</button>
+                <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
+            </div>
+
         </div>
 
         <div v-if="etapaAtual === 2" class="etapa">
@@ -102,6 +119,7 @@
             <button @click="confirmarAgendamento" class="botao-proxima-etapa">Confirmar Agendamento</button>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -162,7 +180,7 @@ export default {
         } else {
             alert('Falha no login. Verifique suas credenciais.');
         }
-        
+
         this.getAreas()
     },
     methods: {
@@ -209,7 +227,7 @@ export default {
             }
 
             console.log(send);
-            
+
             let schedule = await this.$store.dispatch('scheduleTutoring', send);
             console.log(schedule)
             if (schedule) {
@@ -219,7 +237,7 @@ export default {
             }
         },
         getHorarios() {
-            
+
         },
         selecionarHora(hora){
             this.horaSelecionada = hora
@@ -370,7 +388,6 @@ export default {
 }
 
 .cabecalho {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -383,15 +400,32 @@ export default {
 }
 
 .nome-professor {
-    font-weight: bold;
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .info-adicional {
-    font-size: 0.8em;
-    color: grey;
-    margin-left: 10px;
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #F9F9F9;
+    height: fit-content;
 }
-
+.graduation-teacher{
+    color: #787878;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 .selecao-dias {
     display: flex;
     margin-bottom: 10px;
@@ -427,15 +461,80 @@ export default {
     margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    text-align: center;
+    border-radius: 8px;
 }
 
 .botao-proxima-etapa {
     background-color: #003773;
-    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     float: right;
+
+    color: #FFF;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+}
+.informacoes{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+.questions-paragraphs p{
+    color: #8D8D8D;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.question-title-paragraphs{
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.question-section{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 5px;
+}
+.marcador-etapa{
+    color: #000;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin-inline: 10px; /* 24px */
+}
+.options-steps-card{
+    width: 100%;
+    display: inline-flex;
+}
+.options-steps-card button{
+    width: 100%;
+    margin-inline: 1px;
+    margin-top: 30px;
+}
+.back-redirect-button{
+    border-radius: 4px;
+    border-style: none;
+    background: #FFF;
+
+    color: #1E1E1E;
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
 }
 </style>
