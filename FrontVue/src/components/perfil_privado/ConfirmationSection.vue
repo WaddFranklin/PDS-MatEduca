@@ -39,9 +39,9 @@
                         <p>{{requistionClass.studentDifficult }}</p>
                     </div>
                 </section>
+                <LinkMeetModal :requistionClass="requistionClass" v-if="isModalVisible" @show-modal="showModal"/>
             </li>
         </ul>
-        <LinkMeetModal v-if="isModalVisible" @show-modal="showModal"/>
     </section>
 </template>
 

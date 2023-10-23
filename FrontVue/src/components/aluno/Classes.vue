@@ -111,8 +111,10 @@ export default {
                     studentAutoAvaliation: studentAutoAvaliation,
                     agendada: agendada,
                     analise: analise,
-                    recusada: recusada
+                    recusada: recusada,
+                    link: result.data[i]['link']
                 })
+
 
                 this.flag_classes = true
             }

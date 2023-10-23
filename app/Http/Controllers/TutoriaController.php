@@ -21,6 +21,7 @@ class TutoriaController extends Controller
             $tutoria->horario_id = $data['horario_id'];
             $tutoria->aluno_id = $data['aluno_id'];
             $tutoria->tutor_id = $data['tutor_id'];
+            $tutoria->link = $data['link'];
 
             $tutoria->maiores_dificuldades = $data['maiores_dificuldades'];
             $tutoria->tutoria_status_id = $data['tutoria_status_id'];
@@ -65,6 +66,7 @@ class TutoriaController extends Controller
             $tutoria->maiores_dificuldades = $data['maiores_dificuldades'];
             $tutoria->tutoria_status_id = $data['tutoria_status_id'];
             $tutoria->ativo = $data['ativo'];
+            $tutoria->link = $data['link'];
 
             $tutoria->save();
 

@@ -32,7 +32,7 @@
                         <h2><i class="bi bi-pencil"></i></h2>
                     </div>
                     <div v-if="reservationClasses.agendada">
-                        <button class="meet-link-btn"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
+                        <button class="meet-link-btn" @click="openLink(reservationClasses.link)"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
                     </div>
                     <div v-if="reservationClasses.recusada">
                         <div class="msg-denial-class"><p>Aula Recusada</p></div>
@@ -62,7 +62,12 @@ export default {
     methods:{
         showCancelModal(){
             this.visibilityOfcancelModal = !this.visibilityOfcancelModal;
-        }
+        },
+        openLink(link) {
+            if (link != "vazio") {
+                window.open(link, '_blank'); // Abre o link em uma nova guia
+            }
+        },
     }
 }
 </script>

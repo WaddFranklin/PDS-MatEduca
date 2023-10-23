@@ -205,7 +205,8 @@ export default {
                 tutor_id: this.currentTutor.id,
                 notas_Assuntos: notas_assuntos,
                 maiores_dificuldades: JSON.parse(JSON.stringify(this.maioresDificuldades)),
-                tutoria_status_id: status_type
+                tutoria_status_id: status_type,
+                link: "vazio",
             }
 
             //console.log(send);

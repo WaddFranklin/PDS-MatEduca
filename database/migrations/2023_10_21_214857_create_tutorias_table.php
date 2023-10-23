@@ -33,6 +33,7 @@ return new class extends Migration
                 'id'
             );
             $table->string('maiores_dificuldades', 255);
+            $table->string('link', 255);
 
             $table->boolean('ativo');
             $table->timestamps();
