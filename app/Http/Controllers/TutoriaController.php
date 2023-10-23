@@ -6,6 +6,8 @@ use App\Models\Horario;
 use Illuminate\Http\Request;
 use App\Models\Tutoria;
 use App\Models\SelectedSubject;
+use App\Models\TutoriaStatus;
+
 
 class TutoriaController extends Controller
 {
@@ -19,6 +21,7 @@ class TutoriaController extends Controller
             $tutoria->horario_id = $data['horario_id'];
             $tutoria->aluno_id = $data['aluno_id'];
             $tutoria->tutor_id = $data['tutor_id'];
+            $tutoria->link = $data['link'];
 
             $tutoria->maiores_dificuldades = $data['maiores_dificuldades'];
             $tutoria->tutoria_status_id = $data['tutoria_status_id'];
@@ -48,6 +51,70 @@ class TutoriaController extends Controller
             ], 200); // Você pode ajustar o código de status HTTP conforme necessário
         }
 
+    }
+
+    public function updateTutoria(Request $request, $id)
+    {
+        $data = $request->all();
+
+        try {
+            $tutoria = Tutoria::findOrFail($id);
+
+            $tutoria->aluno_id = $data['aluno_id'];
+            $tutoria->horario_id = $data['horario_id'];
+            $tutoria->tutor_id = $data['tutor_id'];
+            $tutoria->maiores_dificuldades = $data['maiores_dificuldades'];
+            $tutoria->tutoria_status_id = $data['tutoria_status_id'];
+            $tutoria->ativo = $data['ativo'];
+            $tutoria->link = $data['link'];
+
+            $tutoria->save();
+
+            return response()->json([
+                'message' => 'Tutoria atualizada com sucesso',
+                'data' => $tutoria 
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => 'Erro ao atualizar a tutoria: ' . $e->getMessage()
+            ], 200); // Você pode ajustar o código de status HTTP conforme necessário
+        }
+    }
+
+
+    public function getSubjects(Request $request)
+    {
+        $subjects = SelectedSubject::all()->toArray();
+
+        return response()->json([
+            'message' => 'Assuntos recuperados com sucesso',
+            'data' => $subjects
+        ]);
+    }
+
+    public function getTutoria(Request $request)
+    {
+        $data = $request->all();
+        $id = $data["id"];
+        $type = $data["type"];
+    
+        $tutorias = Tutoria::where($type, $id)->get()->toArray();
+    
+        return response()->json([
+            'message' => 'Tutorias recuperadas com sucesso',
+            'data' => $tutorias
+        ]);
+    }
+
+    public function getTutoriaStatus(Request $request)
+    {
+    
+        $tutoriaStatus = TutoriaStatus::all()->toArray();
+    
+        return response()->json([
+            'message' => 'Tutorias recuperadas com sucesso',
+            'data' => $tutoriaStatus
+        ]);
     }
 }
 
