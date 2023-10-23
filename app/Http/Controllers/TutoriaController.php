@@ -6,6 +6,8 @@ use App\Models\Horario;
 use Illuminate\Http\Request;
 use App\Models\Tutoria;
 use App\Models\SelectedSubject;
+use App\Models\TutoriaStatus;
+
 
 class TutoriaController extends Controller
 {
@@ -48,6 +50,41 @@ class TutoriaController extends Controller
             ], 200); // Você pode ajustar o código de status HTTP conforme necessário
         }
 
+    }
+
+    public function getSubjects(Request $request)
+    {
+        $subjects = SelectedSubject::all()->toArray();
+
+        return response()->json([
+            'message' => 'Assuntos recuperados com sucesso',
+            'data' => $subjects
+        ]);
+    }
+
+    public function getTutoria(Request $request)
+    {
+        $data = $request->all();
+        $id = $data["id"];
+        $type = $data["type"];
+    
+        $tutorias = Tutoria::where($type, $id)->get()->toArray();
+    
+        return response()->json([
+            'message' => 'Tutorias recuperadas com sucesso',
+            'data' => $tutorias
+        ]);
+    }
+
+    public function getTutoriaStatus(Request $request)
+    {
+    
+        $tutoriaStatus = TutoriaStatus::all()->toArray();
+    
+        return response()->json([
+            'message' => 'Tutorias recuperadas com sucesso',
+            'data' => $tutoriaStatus
+        ]);
     }
 }
 

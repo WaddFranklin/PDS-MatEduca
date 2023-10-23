@@ -42,3 +42,11 @@ Route::get('/status', [TutorController::class, "getTutoriaStatus"]);
 Route::post('/imagem', [ImageController::class, "retornarImagem"]);
 
 Route::post('/tutoria', [TutoriaController::class, "index"]);
+
+Route::get('/assuntos', [TutoriaController::class, "getSubjects"]);
+
+Route::post('/getTutorias', [TutoriaController::class, "getTutoria"]);
+
+Route::post('/tutorBYID', [TutorController::class, "getTutoresByID"]);
+
+Route::get('/getTutoriaStatus', [TutoriaController::class, "getTutoriaStatus"]);

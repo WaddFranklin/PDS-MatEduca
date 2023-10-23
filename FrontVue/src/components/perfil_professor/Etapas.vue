@@ -208,7 +208,7 @@ export default {
                 tutoria_status_id: status_type
             }
 
-            console.log(send);
+            //console.log(send);
             
             let schedule = await this.$store.dispatch('scheduleTutoring', send);
             console.log(schedule)

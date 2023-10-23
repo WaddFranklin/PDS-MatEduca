@@ -1,6 +1,6 @@
 <template>
    <ul>
-    <li  class="small-class-list" v-for="(reservationClasses, index) in confirmedClasses" :key="index">
+    <li  class="small-class-list" v-for="(reservationClasses, index) in this.confirmedClasses" :key="index">
         <section class="class-requesition">
             <div class="student-requesition-information-up">
                 <div class="requesition-information-left">
@@ -43,27 +43,12 @@
 import Divider from '../layout/Divider.vue';
 import CancelModal from './CancelModal.vue';
 export default {
-  components: { Divider, CancelModal },
+    props:['confirmedClasses'],
+    components: { Divider, CancelModal },
 
     data(){
         return{
             visibilityOfcancelModal: false,
-
-            confirmedClasses: [{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            },{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            }]
         }
     },
     methods:{

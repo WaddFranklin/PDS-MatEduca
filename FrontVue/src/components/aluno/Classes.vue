@@ -3,7 +3,7 @@
     <h1>Próximas aulas</h1>
     <div class="classes">
         <section  class="aproved-requisitions" v-if="flag_classes">
-            <card-student-classes/>
+            <card-student-classes :confirmedClasses="confirmedClasses"/>
         </section>
         <div class="no-item" v-if="!flag_classes">
             <div class="item-img">
@@ -54,38 +54,90 @@ export default {
     },
     async mounted() {
         const user = JSON.parse(JSON.stringify(this.user))
-        if (user)
-        {
+        let result = await this.$store.dispatch('getTutoriasMarcadas', {id: user.data.id, type: 'aluno_id'});
 
+
+        console.log(result)
+        let tutoriaStatus = await this.$store.dispatch('getTutoriaStatus');
+        let subjects = await this.$store.dispatch('getSubjects');
+
+        
+        if (result.data.length > 0)
+        {
+            for (let i = 0; i < result.data.length; i++){
+                const tutor_id = result.data[i]['tutor_id']
+                
+                let tutor = await this.$store.dispatch('getTutorByID', {id: tutor_id});
+                
+                const dataFormatada = this.formatarData(result.data[i]['created_at']);
+                
+                let status = false
+                for (let j = 0; j < tutoriaStatus.data.length; j++){
+                    if (tutoriaStatus.data[j]['id'] === result.data[i]['tutoria_status_id']) {
+                        if (tutoriaStatus.data[j]['descricao'] === "EM ANALISE")
+                            status = true
+                    }
+                }
+
+
+                let studentAutoAvaliation = []
+                for (let m = 0; m < subjects.length; m++){
+                    if (subjects[m]['aluno_id'] === user.data.id) {
+                        if (subjects[m]['tutor_id'] === tutor_id) {
+                            studentAutoAvaliation.push({
+                                subject: subjects[m]['assunto_selecionado'], 
+                                avaliation: subjects[m]['nota']
+                            })
+                        }
+                    }
+                }
+
+                this.confirmedClasses.push({
+                teacherName: tutor.data[0]['nome'] + " " + tutor.data[0]['sobrenome'],
+                reservationTime: dataFormatada,
+                studentDificults: result.data[i]['maiores_dificuldades'],
+                studentAutoAvaliation: studentAutoAvaliation
+                })
+
+                this.flag_classes = true
+            }
         }
     },
     data(){
         return{
             classes: [],
-            flag_classes: true,
+            flag_classes: false,
             have_classes: true,
             isModalVisible: false,
-            confirmedClasses: [{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            },{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            }]
+            confirmedClasses: []
         }
     },
     methods:{
         showModal(){
             this.isModalVisible = !this.isModalVisible
-        }
+        },
+        formatarData(dataStr) {
+            // Crie um objeto Date com a data original
+            const data = new Date(dataStr);
+
+            // Defina os nomes dos meses
+            const meses = [
+                'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+            ];
+
+            // Extraia o dia, mês, ano, hora e minutos
+            const dia = data.getDate();
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+            const hora = data.getHours();
+            const minutos = data.getMinutes();
+
+            // Formate a data no estilo desejado
+            const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
+
+            return dataFormatada;
+            }
     }
 }
 </script>
