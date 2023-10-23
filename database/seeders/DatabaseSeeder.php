@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             TutoriaStatusSeeder::class,
             LoginSeeder::class,
             EspecialidadeSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            SubtopicoSeeder::class,
         ]);
     }
 }
