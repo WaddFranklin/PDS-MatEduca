@@ -50,3 +50,5 @@ Route::post('/getTutorias', [TutoriaController::class, "getTutoria"]);
 Route::post('/tutorBYID', [TutorController::class, "getTutoresByID"]);
 
 Route::get('/getTutoriaStatus', [TutoriaController::class, "getTutoriaStatus"]);
+
+Route::post('/tutorias/{id}', [TutoriaController::class, "updateTutoria"]);

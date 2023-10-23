@@ -12,13 +12,13 @@
                             <p>{{ requistionClass.timeStampOfRequisitionClass }}</p>
                         </div>
                         <div class="requesition-information-right">
-                            <button @click="Recuse" v-if="!isAproved && !isRecused" class="negate-btn" type="button"> <i class="bi bi-x-circle-fill"></i>Recusar</button>
-                            <div class="msg-denial-class" v-if="isRecused"><p>Aula Recusada</p></div>
+                            <button @click="Recuse(requistionClass)" v-if="requistionClass.isNotSelect" class="negate-btn" type="button"> <i class="bi bi-x-circle-fill"></i>Recusar</button>
+                            <div class="msg-denial-class" v-if="requistionClass.recusada"><p>Aula Recusada</p></div>
 
-                            <button @click="Aprove" v-if="!isAproved && !isRecused" class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
+                            <button @click="Aprove(requistionClass)" v-if="requistionClass.isNotSelect" class="confirmation-btn" type="button"><i class="bi bi-check-circle-fill"></i> Aprovar</button>
 
-                            <button v-if="isAproved" @click="showModal()" class="meet-link-btn"> Link da chamada</button>
-                            <button v-if="isAproved" class="confirmation-btn simple" type="button"><i class="bi bi-check"></i> Confirmada</button>
+                            <button v-if="requistionClass.agendada" @click="showModal()" class="meet-link-btn"> Link da chamada</button>
+                            <button v-if="requistionClass.agendada" class="confirmation-btn simple" type="button"><i class="bi bi-check"></i> Confirmada</button>
                         </div>
                     </div>
                     <divider/>
@@ -47,44 +47,133 @@
 
 <script>
 import Divider from '../layout/Divider.vue'
+import { mapGetters } from 'vuex';
 import LinkMeetModal from '../layout/LinkMeetModal.vue';
 export default {
   components: { Divider, LinkMeetModal },
+  computed: {
+        ...mapGetters(['isAuthenticated', 'user']),
+    },
+
+    updated(){
+        console.log("ok")
+        if (this.update) {
+            this.dataTutoria()
+            this.update = false
+        }
+    },
+
+    async mounted() {
+            this.dataTutoria()
+    },
 
   data(){
     return{
+        update: false,
         isAproved: false,
         isRecused: false,
         isModalVisible:false,
-        requisitionClassExample: [
-            {
-                studentName: 'Nome do estudante',
-                timeStampOfRequisitionClass: '29 de agosto de 2023 às 14:00',
-                studentDifficult:"Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.",
-                studentAutoAvaliation: [{
-                    subject:'Equação do 2º grau',
-                    autoAvaliation: 1
-                },
-                {
-                    subject:'Algebra',
-                    autoAvaliation: 3
-                },
-            ]
-
-            },
-        ]
+        requisitionClassExample: []
     }
   },
   methods:{
-    Aprove(){
-        this.isAproved = true;
+    async Aprove(requistionClass){
+        const temp = JSON.parse(JSON.stringify(requistionClass))
+        temp.currentTutoria.tutoria_status_id = 2
+        let update = await this.$store.dispatch('updateTutoria', temp.currentTutoria);
+
+        this.dataTutoria()
     },
-    Recuse(){
-        this.isRecused = true;
+    async Recuse(requistionClass){
+        const temp = JSON.parse(JSON.stringify(requistionClass))
+        temp.currentTutoria.tutoria_status_id = 3
+        let update = await this.$store.dispatch('updateTutoria', temp.currentTutoria);
+
+        this.dataTutoria()
     },
     showModal(){
 
         this.isModalVisible = !this.isModalVisible;
+    },
+    formatarData(dataStr) {
+            // Crie um objeto Date com a data original
+            const data = new Date(dataStr);
+
+            // Defina os nomes dos meses
+            const meses = [
+                'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+            ];
+
+            // Extraia o dia, mês, ano, hora e minutos
+            const dia = data.getDate();
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+            const hora = data.getHours();
+            const minutos = data.getMinutes();
+
+            // Formate a data no estilo desejado
+            const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
+
+            return dataFormatada;
+    },
+    async dataTutoria(){
+        const user = JSON.parse(JSON.stringify(this.user))
+        this.requisitionClassExample = []
+        let result = await this.$store.dispatch('getTutoriasMarcadas', {id: user.data.id, type: 'tutor_id'});
+
+        let tutoriaStatus = await this.$store.dispatch('getTutoriaStatus');
+        let subjects = await this.$store.dispatch('getSubjects');
+
+        
+        if (result.data.length > 0)
+        {
+            for (let i = 0; i < result.data.length; i++){
+                
+                const dataFormatada = this.formatarData(result.data[i]['created_at']);
+
+                let aluno = await this.$store.dispatch('getTutorByID', {id: result.data[i]['aluno_id']});
+                
+                let agendada = false
+                let analise = false
+                let recusada = false
+                for (let j = 0; j < tutoriaStatus.data.length; j++){
+                    console.log(tutoriaStatus.data[j]['descricao'])
+                    if (tutoriaStatus.data[j]['id'] === result.data[i]['tutoria_status_id']) {
+                        if (tutoriaStatus.data[j]['descricao'] === "AGENDADA")
+                            agendada = true
+                        if (tutoriaStatus.data[j]['descricao'] === "EM ANALISE")
+                            analise = true
+                        if (tutoriaStatus.data[j]['descricao'] === "RECUSADA")
+                            recusada = true
+                    }
+                }
+
+
+                let studentAutoAvaliation = []
+                for (let m = 0; m < subjects.length; m++){
+                    if (subjects[m]['aluno_id'] === result.data[i]['aluno_id']) {
+                        if (subjects[m]['tutor_id'] === user.data.id) {
+                            studentAutoAvaliation.push({
+                                subject: subjects[m]['assunto_selecionado'], 
+                                autoAvaliation: subjects[m]['nota']
+                            })
+                        }
+                    }
+                }
+
+                this.requisitionClassExample.push({
+                    studentName: aluno.data[0]['nome'] + " " + aluno.data[0]['sobrenome'],
+                    timeStampOfRequisitionClass: dataFormatada,
+                    studentDifficult:result.data[i]['maiores_dificuldades'],
+                    studentAutoAvaliation: studentAutoAvaliation,
+                    isNotSelect: analise,
+                    agendada: agendada,
+                    recusada: recusada,
+                    currentTutoria: result.data[i]
+                })
+            }
+        }
     }
   }
 }

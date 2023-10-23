@@ -134,6 +134,22 @@ const store = new Vuex.Store({
       }
     },
 
+
+    async updateTutoria({ commit }, obj) {
+      try {
+        const response = await apiService().post(`/api/tutorias/${obj.id}`, obj);
+    
+        if (response.status === 200) {
+          return response.data;
+        } else {
+          return undefined;
+        }
+      } catch (error) {
+        console.error(error);
+        return undefined;
+      }
+    },
+
     async getTutoriaStatus({commit}) {
       try {
         const response = await apiService().get('/api/getTutoriaStatus');
