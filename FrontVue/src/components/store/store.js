@@ -78,7 +78,34 @@ const store = new Vuex.Store({
             console.error(error);
       }
     },
-    
+
+    async getSubjects({ commit }) {
+      try {
+        const response = await apiService().get('/api/assuntos');
+        if (response.status == 200) {
+          return response.data.data
+        } else {
+          return false
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+
+    async getTutoriasMarcadas({ commit }, id) {
+      try {
+        const response = await apiService().post('/api/getTutorias', id);
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return false
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
     async getTutors({commit}) {
       try {
         const response = await apiService().get('/api/tutores');
@@ -92,6 +119,52 @@ const store = new Vuex.Store({
             console.error(error);
       }
     },
+
+    async getTutorByID({commit}, id) {
+      try {
+        const response = await apiService().post('/api/tutorBYID', id);
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+
+    async updateTutoria({ commit }, obj) {
+      try {
+        const response = await apiService().post(`/api/tutorias/${obj.id}`, obj);
+    
+        if (response.status === 200) {
+          return response.data;
+        } else {
+          return undefined;
+        }
+      } catch (error) {
+        console.error(error);
+        return undefined;
+      }
+    },
+
+    async getTutoriaStatus({commit}) {
+      try {
+        const response = await apiService().get('/api/getTutoriaStatus');
+
+        if (response.status == 200) {
+          return response.data
+        } else {
+          return undefined
+        }
+      } catch (error) {
+            console.error(error);
+      }
+    },
+
+
     async getSpeciality() {
       try {
         const response = await apiService().get('/api/especialidades');

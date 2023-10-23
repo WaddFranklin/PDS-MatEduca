@@ -1,35 +1,53 @@
 <template>
     <div class="modal-overlay">
-
-        <section class="card-login meet-link">
-            <section class="head">
-                <h2 class="title-login">Insira aqui o link da chamada</h2>
-                <button @click="$emit('showModal')"><i class="bi bi-x"></i></button>
-            </section>
-
-            <section class="student-requesition-resume">
-                <h4>Nome do Estudante</h4>
-                <p>29 de agosto de 2023 às 14:00</p>
-            </section>
-
-            <form class="link-form" action="">
-                <label for="">Link da chamada</label>
-                <input type="url" class="link-bar" placeholder="Cole aqui o link da chamada">
-                <div class="button-options">
-                    <button @click.prevent ="$emit('showModal')" type="button">Cancelar</button>
-                    <button @click.prevent ="$emit('showModal')" class="save-btn" type="submit">Salvar</button>
-                </div>
-            </form>
+      <section class="card-login meet-link">
+        <section class="head">
+          <h2 class="title-login">Insira aqui o link da chamada</h2>
+          <button @click="$emit('showModal')"><i class="bi bi-x"></i></button>
         </section>
+  
+        <section class="student-requesition-resume">
+          <h4>{{ requistionClass.studentName }}</h4>
+          <p>{{ requistionClass.timeStampOfRequisitionClass }}</p>
+        </section>
+  
+        <form class="link-form" @submit.prevent="updateLink">
+          <label for="link">Link da chamada</label>
+          <input type="url" class="link-bar" placeholder="Cole aqui o link da chamada" v-model="link" id="link">
+          <div class="button-options">
+            <button @click.prevent="$emit('showModal')" type="button">Cancelar</button>
+            <button class="save-btn" type="submit">Salvar</button>
+          </div>
+        </form>
+      </section>
     </div>
-</template>
+  </template>
+  
+  <script>
+  export default {
+    props: ['requistionClass'],
+    emits: ['showModal'],
+    data() {
+      return {
+        link: '', // Variável para armazenar o link digitado
+      };
+    },
+    methods: {
+      async updateLink() {
+        let temp = JSON.parse(JSON.stringify(this.requistionClass));
+        temp = temp.currentTutoria
 
-<script>
-export default {
+        temp.link = this.link;
+        console.log(temp)
+        const resp = await this.$store.dispatch('updateTutoria', temp);
 
-    emits:['showModal'],
-}
-</script>
+        console.log(resp)
+        if (resp)
+            this.$emit('showModal')
+      },
+    },
+  };
+  </script>
 
 <style scoped>
 

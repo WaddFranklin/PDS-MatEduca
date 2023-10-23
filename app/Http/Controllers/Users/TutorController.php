@@ -9,6 +9,7 @@ use App\Models\UsuarioEspecialidade;
 use App\Models\Especialidade;
 use App\Models\TutoriaStatus;
 use App\Models\Horario;
+use App\Models\SelectedSubject;
 use Illuminate\Support\Facades\DB;
 
 
@@ -155,6 +156,18 @@ class TutorController extends Controller
         return response()->json([
             'message' => 'Horários recuperados com sucesso',
             'data' => $horarios
+        ]);
+    }
+
+    public function getTutoresByID(Request $request)
+    {
+        $data = $request->all();
+        $id = $data["id"];
+        $tutor = DB::table('usuarios')->where('id', $id)->get()->toArray();
+
+        return response()->json([
+            'message' => 'Tutor recuperados com sucesso',
+            'data' => $tutor
         ]);
     }
 }

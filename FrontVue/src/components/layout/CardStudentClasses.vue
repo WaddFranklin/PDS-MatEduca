@@ -1,6 +1,6 @@
 <template>
    <ul>
-    <li  class="small-class-list" v-for="(reservationClasses, index) in confirmedClasses" :key="index">
+    <li  class="small-class-list" v-for="(reservationClasses, index) in this.confirmedClasses" :key="index">
         <section class="class-requesition">
             <div class="student-requesition-information-up">
                 <div class="requesition-information-left">
@@ -31,7 +31,15 @@
                         <h2 @click="showCancelModal"><i class="bi bi-calendar2-x"></i></h2>
                         <h2><i class="bi bi-pencil"></i></h2>
                     </div>
-                    <button class="meet-link-btn"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
+                    <div v-if="reservationClasses.agendada">
+                        <button class="meet-link-btn" @click="openLink(reservationClasses.link)"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
+                    </div>
+                    <div v-if="reservationClasses.recusada">
+                        <div class="msg-denial-class"><p>Aula Recusada</p></div>
+                    </div>
+                    <div v-if="reservationClasses.analise">
+                        <div class="msg-analise-class"><p>Em Análise</p></div>
+                    </div>
                 </div>
         </section>
     </li>
@@ -43,33 +51,23 @@
 import Divider from '../layout/Divider.vue';
 import CancelModal from './CancelModal.vue';
 export default {
-  components: { Divider, CancelModal },
+    props:['confirmedClasses'],
+    components: { Divider, CancelModal },
 
     data(){
         return{
             visibilityOfcancelModal: false,
-
-            confirmedClasses: [{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            },{
-                teacherName: 'Juliana Ribeiro',
-                reservationTime: '29 de agosto de 2023 às 14:00',
-                studentDificults: 'Não consegui identificar ainda minhas principais dificuldades e gostaria que você me ajudasse.',
-                studentAutoAvaliation: [
-                    { subject: 'Equação do 2º grau', avaliation: 1},
-                    { subject: 'Geometria Analítica', avaliation: 4}]
-            }]
         }
     },
     methods:{
         showCancelModal(){
             this.visibilityOfcancelModal = !this.visibilityOfcancelModal;
-        }
+        },
+        openLink(link) {
+            if (link != "vazio") {
+                window.open(link, '_blank'); // Abre o link em uma nova guia
+            }
+        },
     }
 }
 </script>
@@ -109,6 +107,25 @@ export default {
     flex-wrap: wrap;
 
 }
+
+.msg-analise-class{
+
+width: 100%;
+background: var(--negative-50, #FFF3F2);
+text-align: center;
+height: fit-content;
+align-items: center;
+}
+.msg-analise-class p{
+
+color: yellow;
+font-family: Helvetica Neue;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 150%;
+}
+
 .aproved-requisitions ul{
     display: inline-flex;
     flex-direction: row;
