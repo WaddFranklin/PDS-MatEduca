@@ -24,10 +24,12 @@
         </p>
     </div>
     <div class="exit-option" @click="logout">
+        <router-link to="#" class="exit-option-link">
         <p>
             <i class="bi bi-box-arrow-in-right"></i>
             Sair
         </p>
+        </router-link>
     </div>
   </div>
 </template>
@@ -89,6 +91,10 @@ export default {
 .options-nav-link{
     text-decoration: none;
     color: black;
+}
+.exit-option-link{
+    text-decoration: none;
+    color: var(--negative-600, #8B0A03);
 }
 
 </style>
