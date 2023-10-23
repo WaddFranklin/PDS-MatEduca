@@ -31,7 +31,15 @@
                         <h2 @click="showCancelModal"><i class="bi bi-calendar2-x"></i></h2>
                         <h2><i class="bi bi-pencil"></i></h2>
                     </div>
-                    <button class="meet-link-btn"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
+                    <div v-if="reservationClasses.agendada">
+                        <button class="meet-link-btn"> <i class="bi bi-box-arrow-up-right"></i> Link da chamada</button>
+                    </div>
+                    <div v-if="reservationClasses.recusada">
+                        <div class="msg-denial-class"><p>Aula Recusada</p></div>
+                    </div>
+                    <div v-if="reservationClasses.analise">
+                        <div class="msg-analise-class"><p>Em Análise</p></div>
+                    </div>
                 </div>
         </section>
     </li>
@@ -94,6 +102,25 @@ export default {
     flex-wrap: wrap;
 
 }
+
+.msg-analise-class{
+
+width: 100%;
+background: var(--negative-50, #FFF3F2);
+text-align: center;
+height: fit-content;
+align-items: center;
+}
+.msg-analise-class p{
+
+color: yellow;
+font-family: Helvetica Neue;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 150%;
+}
+
 .aproved-requisitions ul{
     display: inline-flex;
     flex-direction: row;

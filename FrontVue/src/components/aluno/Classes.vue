@@ -71,11 +71,17 @@ export default {
                 
                 const dataFormatada = this.formatarData(result.data[i]['created_at']);
                 
-                let status = false
+                let agendada = false
+                let analise = false
+                let recusada = false
                 for (let j = 0; j < tutoriaStatus.data.length; j++){
                     if (tutoriaStatus.data[j]['id'] === result.data[i]['tutoria_status_id']) {
+                        if (tutoriaStatus.data[j]['descricao'] === "AGENDADA")
+                            agendada = true
                         if (tutoriaStatus.data[j]['descricao'] === "EM ANALISE")
-                            status = true
+                            analise = true
+                        if (tutoriaStatus.data[j]['descricao'] === "RECUSADA")
+                            recusada = true
                     }
                 }
 
@@ -93,10 +99,13 @@ export default {
                 }
 
                 this.confirmedClasses.push({
-                teacherName: tutor.data[0]['nome'] + " " + tutor.data[0]['sobrenome'],
-                reservationTime: dataFormatada,
-                studentDificults: result.data[i]['maiores_dificuldades'],
-                studentAutoAvaliation: studentAutoAvaliation
+                    teacherName: tutor.data[0]['nome'] + " " + tutor.data[0]['sobrenome'],
+                    reservationTime: dataFormatada,
+                    studentDificults: result.data[i]['maiores_dificuldades'],
+                    studentAutoAvaliation: studentAutoAvaliation,
+                    agendada: agendada,
+                    analise: analise,
+                    recusada: recusada
                 })
 
                 this.flag_classes = true
