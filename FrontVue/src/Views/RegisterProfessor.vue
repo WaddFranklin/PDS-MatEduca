@@ -139,58 +139,10 @@
 
               <button
                 class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.AnaliseCombinatoriaProbabilidade }"
-                @click="toggleSpecialty('AnaliseCombinatoriaProbabilidade')"
-              >
-                Analise Combinatória e Probabilidade
-              </button>
-
-              <button
-                class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.FuncoesExponenciaisLogaritmicas }"
-                @click="toggleSpecialty('FuncoesExponenciaisLogaritmicas')"
-              >
-                Funções Exponenciais e Logarítmicas
-              </button>
-
-              <button
-                class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.NumerosComplexos }"
-                @click="toggleSpecialty('NumerosComplexos')"
-              >
-                Números Complexos
-              </button>
-
-              <button
-                class="specialty-item"
                 :class="{ 'selected': selectedSpecialties.MatrizesDeterminantes }"
                 @click="toggleSpecialty('MatrizesDeterminantes')"
               >
                 Matrizes e Determinantes
-              </button>
-
-              <button
-                class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.GeometriaAnaliticaPlanoEspaco }"
-                @click="toggleSpecialty('GeometriaAnaliticaPlanoEspaco')"
-              >
-                Geometria Analítica no Plano e no Espaço
-              </button>
-
-              <button
-                class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.Estatistica }"
-                @click="toggleSpecialty('Estatistica')"
-              >
-                Estatística
-              </button>
-
-              <button
-                class="specialty-item"
-                :class="{ 'selected': selectedSpecialties.GeometriaAnaliticaVetores }"
-                @click="toggleSpecialty('GeometriaAnaliticaVetores')"
-              >
-                Geometria Analítica e Vetores
               </button>
             </div>
 
@@ -547,13 +499,7 @@ export default {
         algebra: false,
         geometria: false,
         trigonometria: false,
-        AnaliseCombinatoriaProbabilidade: false,
-        FuncoesExponenciaisLogaritmicas: false,
-        NumerosComplexos: false,
         MatrizesDeterminantes: false,
-        GeometriaAnaliticaPlanoEspaco: false,
-        Estatistica: false,
-        GeometriaAnaliticaVetores: false
       },
 
     }
@@ -657,13 +603,7 @@ export default {
         algebra: "ÁLGEBRA",
         geometria: "GEOMETRIA",
         trigonometria: "TRIGONOMETRIA",
-        AnaliseCombinatoriaProbabilidade: "ANÁLISE COMBINATÓRIA E PROBABILIDADE",
-        FuncoesExponenciaisLogaritmicas: "FUNÇÕES EXPONENCIAIS E LOGARÍTMICAS",
-        NumerosComplexos: "NÚMEROS COMPLEXOS",
         MatrizesDeterminantes: "MATRIZES E DETERMINANTES",
-        GeometriaAnaliticaPlanoEspaco: "GEOMETRIA ANALÍTICA NO PLANO E NO ESPAÇO",
-        Estatistica: "ESTATÍSTICA",
-        GeometriaAnaliticaVetores: "GEOMETRIA ANALÍTICA E VETORES"
       }
 
       // Criando o novo objeto com base no objeto 'names'

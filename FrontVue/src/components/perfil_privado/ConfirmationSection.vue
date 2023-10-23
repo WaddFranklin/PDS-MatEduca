@@ -95,25 +95,16 @@ export default {
 
         this.isModalVisible = !this.isModalVisible;
     },
-    formatarData(dataStr) {
-            // Crie um objeto Date com a data original
-            const data = new Date(dataStr);
+    formatarData(data, hora) {
+            const dataHora = new Date(`${data}T${hora}`);
 
-            // Defina os nomes dos meses
-            const meses = [
-                'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-                'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
-            ];
+            const dia = dataHora.getDate();
+            const mes = dataHora.toLocaleString('pt-BR', { month: 'long' }); // Nome completo do mês
+            const ano = dataHora.getFullYear();
+            const horas = dataHora.getHours();
+            const minutos = dataHora.getMinutes();
 
-            // Extraia o dia, mês, ano, hora e minutos
-            const dia = data.getDate();
-            const mes = meses[data.getMonth()];
-            const ano = data.getFullYear();
-            const hora = data.getHours();
-            const minutos = data.getMinutes();
-
-            // Formate a data no estilo desejado
-            const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
+            const dataFormatada = `${dia} de ${mes} de ${ano} às ${horas}:${minutos}`;
 
             return dataFormatada;
     },
@@ -130,7 +121,14 @@ export default {
         {
             for (let i = 0; i < result.data.length; i++){
                 
-                const dataFormatada = this.formatarData(result.data[i]['created_at']);
+                let dataFormatada = undefined
+
+                let horarios = await this.$store.dispatch('getHorarios');
+                for (let n = 0; n < horarios.data.length; n++){
+                        if (result.data[i]['horario_id'] == horarios.data[n]['id'])
+                            dataFormatada = this.formatarData(horarios.data[n]['data'], horarios.data[n]['hora']);
+                }
+                
 
                 let aluno = await this.$store.dispatch('getTutorByID', {id: result.data[i]['aluno_id']});
                 
