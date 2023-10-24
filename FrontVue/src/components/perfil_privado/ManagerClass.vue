@@ -4,7 +4,7 @@
     <Divider/>
     <section class="manager-class-section">
         <section class="manager-class-left-block">
-            <NavIndexPerfil/>
+            <NavIndexPerfil :setPage="setPage"/>
         </section>
         <section class="manager-class-right-block">
             <section class="manager-block-up">
@@ -22,7 +22,8 @@
                     </div>
                 </div>
                 <SimpleSearchBar/>
-                <confirmation-section/>
+                <confirmation-section  v-if="page == 1"/>
+                <Classes v-if="page == 2"></Classes>
             </section>
         </section>
         </section>
@@ -35,9 +36,19 @@ import Divider from '../layout/Divider.vue'
 import SimpleSearchBar from '../layout/SimpleSearchBar.vue'
 import ConfirmationSection from './ConfirmationSection.vue'
 import NavIndexPerfil from './NavIndexPerfil.vue'
+import Classes from '../aluno/Classes.vue'
 export default {
-  components: { Divider, NavIndexPerfil, SearchBar, SimpleSearchBar, ConfirmationSection },
-
+  components: { Divider, NavIndexPerfil, SearchBar, SimpleSearchBar, ConfirmationSection, Classes },
+  data(){
+        return {
+            page: 1,
+        }
+    },
+    methods:{
+        setPage(id) {
+            this.page = id;
+        }
+    }
 }
 </script>
 

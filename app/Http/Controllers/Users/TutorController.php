@@ -18,15 +18,16 @@ class TutorController extends Controller
     public function index(Request $request)
     {
         $data = $request->all();
-
         try {
             $usuario = new Usuario();
             #$usuario->login_id = 1;
             $usuario->nome = $data['nome'];
             $usuario->sobrenome = $data['sobrenome'];
 
-            $usuario->foto_perfil_path = $data['foto_perfil_path']->store("imagesUser", 'public');
-            $usuario->foto_capa_path = $data['foto_capa_path']->store("imagesUser", 'public');
+            #$usuario->foto_perfil_path = $data['foto_perfil_path']->store("imagesUser", 'public');
+            #$usuario->foto_capa_path = $data['foto_capa_path']->store("imagesUser", 'public');
+            $usuario->foto_perfil_path = $data['foto_perfil_path'];
+            $usuario->foto_capa_path = $data['foto_capa_path'];
             $usuario->titulo = $data['titulo'];
             $usuario->bio = $data['bio'];
             $usuario->curriculo = $data['curriculo'];
@@ -39,9 +40,8 @@ class TutorController extends Controller
 
             $new_id = $usuario->id;
 
-            if ($data['usuario_tipo_id'] === 3) {
+            if ($data['usuario_tipo_id'] == 3) {
                 $specilidades = Especialidade::all();
-    
                 
                 foreach ($specilidades as $specilidade) {
                     foreach ($data['speciality'] as $nome) {
@@ -52,7 +52,6 @@ class TutorController extends Controller
                             $especialidade_usuario->especialidade_id = $specilidade["id"];
                             $especialidade_usuario->ativo = true; 
                             $especialidade_usuario->save();
-    
                         }
                     }
                 }

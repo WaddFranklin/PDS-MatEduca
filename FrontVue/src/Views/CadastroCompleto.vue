@@ -13,10 +13,15 @@
           </div>
           <div class="line-complete"></div>
           <div class="button-complete-card">
-            <button class="button-complete">
-              <Icon icon="ci:arrow-right-md" color="white" width="24px"/>
-              <router-link to="/" class="complete-button-text"> Finalizar </router-link>
-            </button>
+            <router-link to="/" style="text-decoration: none;" > 
+              <button class="button-complete" >
+                <Icon icon="ci:arrow-right-md" color="white" width="24px"/>
+                <p class="complete-button-text">
+                  Finalizar 
+
+                </p>
+                </button>
+            </router-link>
           </div>
         </div>
       </section>

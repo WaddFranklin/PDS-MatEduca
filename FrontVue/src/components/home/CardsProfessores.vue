@@ -9,7 +9,7 @@
                 <div class="infopart">
                     <div class="informacao-professor">
                         <h2 class="card-description nome-professor">{{professor.nome + ' ' + professor.sobrenome}}</h2>
-                        <p class="card-text star-icon">
+                        <!-- <p class="card-text star-icon">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -17,6 +17,7 @@
                             <i class="bi bi-star-half"></i>
                             4.5 (23)
                         </p>
+                        -->
                     </div>
                     <div class="informacoes-experience">
                         <div class="experience">
@@ -114,7 +115,7 @@ export default {
 
     .imagem-professor{
         width: 100%;
-        background: url("../../assets/img/perfil.png");
+        background: url("../../assets/img/Avatar.png");
         background-repeat: no-repeat;
         background-size:100%;
         flex-direction: column;

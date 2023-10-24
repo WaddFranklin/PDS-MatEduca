@@ -1,7 +1,14 @@
 <template>
   <navbar class="perfil-index">
-    <div class="perfil-index-item index-activate">
-        <p>Próximas Aulas</p>
+    <div class="perfil-index-item" :class="{ 'index-activate': isActive === 1 }">
+        <button class="button-perfil" @click="activateIndex(1)">
+            <p>Próximas Aulas</p>
+        </button>
+    </div>
+    <div class="perfil-index-item" :class="{ 'index-activate': isActive === 2 }">
+        <button class="button-perfil" @click="activateIndex(2)">
+            <p>Minhas aulas Solicitadas</p>
+        </button>
     </div>
     <div class="perfil-index-item">
         <p>Histórico</p>
@@ -17,16 +24,29 @@
 
 <script>
 export default {
-
+    props: ["setPage"],
+    data() {
+        return {
+            isActive: 1 
+        };
+    },
     methods:{
-        activateIndex(){
-
+        activateIndex(id){
+            this.setPage(id)
+            this.isActive = id
         }
     }
 }
 </script>
 
 <style scoped>
+
+.button-perfil {
+    background: none;
+    border: none;
+    font: inherit;
+    color:inherit;
+}
 navbar.perfil-index{
     width: 100%;
     display: flex;
