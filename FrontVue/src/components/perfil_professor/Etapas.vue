@@ -1,105 +1,107 @@
 <template>
-    <div v-if="this.isAuthenticated" class="etapas">
-        <div v-if="etapaAtual === 1" class="etapa">
-            <div class="cabecalho">
-                <p class="titulo-etapa">Agendar Aula</p>
-                <div class="informacoes">
-                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
-                    <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
-                </div>
-            </div>
-            <div class="selecao-dias">
-                <div v-for="dia in diasSemana" :key="dia" class="dia" :class="{ 'selecionado': diaSelecionado === dia }" @click="selecionarDia(dia)">
-                    {{ dia }}
-                </div>
-            </div>
-            <div class="horarios">
-                <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario" :class="{ 'selecionado': horaSelecionada === horario }" @click="selecionarHora(horario)">
-                    {{ horario["hora"] }}
-                </div>
-            </div>
-            <button @click="redirectToProfessor">Cancelar</button>
-            <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
-        </div>
-
-        <div v-if="etapaAtual === 2" class="etapa">
-            <div class="cabecalho">
-                <p class="titulo-etapa">Agendar Aula</p>
-                <div class="informacoes">
-                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
-                    <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
-                </div>
-                <p>Qual o assunto que deseja estudar?</p>
-                <p style="color: darkgrey">Selecione todas as opções desejáveis</p>
-
-            </div>
-            <div class="assunto-selecao">
-                <p>Selecione todas as opções desejáveis</p>
-                <input type="text" placeholder="Pesquise por assunto" v-model="pesquisaAssunto" />
-                <div v-for="(area, index) in areas" :key="index">
-                    <p>{{ area.nome }}</p>
-                    <div class="linha-sutil"></div>
-                    <div v-for="(assunto, aIndex) in area.assuntos" :key="aIndex" class="assunto">
-                        <input type="checkbox" v-model="assuntosSelecionados" :value="assunto" />
-                        <label>{{ assunto }}</label>
+    <div class="modal-overlay">
+        <div v-if="this.isAuthenticated" class="etapas">
+            <div v-if="etapaAtual === 1" class="etapa">
+                <div class="cabecalho">
+                    <p class="titulo-etapa">Agendar Aula</p>
+                    <div class="informacoes">
+                        <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                        <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
                     </div>
                 </div>
-            </div>
-            <button @click="etapaAtual--">Voltar</button>
-            <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
-        </div>
-
-        <div v-if="etapaAtual === 3" class="etapa">
-        <div class="cabecalho">
-            <p class="titulo-etapa">Agendar Aula</p>
-            <div class="informacoes">
-                <p class="nome-professor">{{this.currentTutor['nome']}}</p>
-                <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
-            </div>
-        </div>
-        <div class="avaliacao-assuntos">
-            <div v-for="(assunto, index) in assuntosSelecionados" :key="index">
-                <p>{{ assunto }}</p>
-                <div class="nota-assunto">
-                    <span>Nota: </span>
-                    <input type="number" v-model="notasAssuntos[index]" min="1" max="7" />
+                <div class="selecao-dias">
+                    <div v-for="dia in diasSemana" :key="dia" class="dia" :class="{ 'selecionado': diaSelecionado === dia }" @click="selecionarDia(dia)">
+                        {{ dia }}
+                    </div>
                 </div>
-            </div>
-        </div>
-        <button @click="etapaAtual--">Voltar</button>
-        <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
-    </div>
-
-        <div v-if="etapaAtual === 4" class="etapa">
-            <div class="cabecalho">
-                <p class="titulo-etapa">Agendar Aula</p>
-                <div class="informacoes">
-                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
-                    <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+                <div class="horarios">
+                    <div v-for="horario in horarios[this.diaSelecionado]" :key="horario" class="horario" :class="{ 'selecionado': horaSelecionada === horario }" @click="selecionarHora(horario)">
+                        {{ horario["hora"] }}
+                    </div>
                 </div>
+                <button @click="redirectToProfessor">Cancelar</button>
+                <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
             </div>
-            <div class="maiores-dificuldades">
-                <textarea placeholder="Descreva suas maiores dificuldades nesse(s) assunto(s)" v-model="maioresDificuldades"></textarea>
-            </div>
-            <button @click="etapaAtual--">Voltar</button>
-            <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
-        </div>
 
-        <div v-if="etapaAtual === 5" class="etapa">
-            <div class="cabecalho">
-                <p class="titulo-etapa">Agendar Aula - Confirmação</p>
-                <div class="informacoes">
-                    <p class="nome-professor">{{this.currentTutor['nome']}}</p>
-                    <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+            <div v-if="etapaAtual === 2" class="etapa">
+                <div class="cabecalho">
+                    <p class="titulo-etapa">Agendar Aula</p>
+                    <div class="informacoes">
+                        <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                        <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+                    </div>
+                    <p>Qual o assunto que deseja estudar?</p>
+                    <p style="color: darkgrey">Selecione todas as opções desejáveis</p>
+
                 </div>
+                <div class="assunto-selecao">
+                    <p>Selecione todas as opções desejáveis</p>
+                    <input type="text" placeholder="Pesquise por assunto" v-model="pesquisaAssunto" />
+                    <div v-for="(area, index) in areas" :key="index">
+                        <p>{{ area.nome }}</p>
+                        <div class="linha-sutil"></div>
+                        <div v-for="(assunto, aIndex) in area.assuntos" :key="aIndex" class="assunto">
+                            <input type="checkbox" v-model="assuntosSelecionados" :value="assunto" />
+                            <label>{{ assunto }}</label>
+                        </div>
+                    </div>
+                </div>
+                <button @click="etapaAtual--">Voltar</button>
+                <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
             </div>
-            <div class="resumo-dados">
-                <p><span>Assuntos Selecionados:</span> {{ assuntosSelecionados.join(', ') }}</p>
-                <p><span>Notas dos Assuntos:</span> {{ notasAssuntos.join(', ') }}</p>
-                <p><span>Maiores Dificuldades:</span> {{ maioresDificuldades }}</p>
+
+            <div v-if="etapaAtual === 3" class="etapa">
+                <div class="cabecalho">
+                    <p class="titulo-etapa">Agendar Aula</p>
+                    <div class="informacoes">
+                        <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                        <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+                    </div>
+                </div>
+                <div class="avaliacao-assuntos">
+                    <div v-for="(assunto, index) in assuntosSelecionados" :key="index">
+                        <p>{{ assunto }}</p>
+                        <div class="nota-assunto">
+                            <span>Nota: </span>
+                            <input type="number" v-model="notasAssuntos[index]" min="1" max="7" />
+                        </div>
+                    </div>
+                </div>
+                <button @click="etapaAtual--">Voltar</button>
+                <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
             </div>
-            <button @click="etapaAtual--">Voltar</button>
-            <button @click="confirmarAgendamento" class="botao-proxima-etapa">Confirmar Agendamento</button>
+
+            <div v-if="etapaAtual === 4" class="etapa">
+                <div class="cabecalho">
+                    <p class="titulo-etapa">Agendar Aula</p>
+                    <div class="informacoes">
+                        <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                        <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+                    </div>
+                </div>
+                <div class="maiores-dificuldades">
+                    <textarea placeholder="Descreva suas maiores dificuldades nesse(s) assunto(s)" v-model="maioresDificuldades"></textarea>
+                </div>
+                <button @click="etapaAtual--">Voltar</button>
+                <button @click="proximo" class="botao-proxima-etapa">Próximo</button>
+            </div>
+
+            <div v-if="etapaAtual === 5" class="etapa">
+                <div class="cabecalho">
+                    <p class="titulo-etapa">Agendar Aula - Confirmação</p>
+                    <div class="informacoes">
+                        <p class="nome-professor">{{this.currentTutor['nome']}}</p>
+                        <p class="info-adicional">Sessões de 1 hora aula (50 min)</p>
+                    </div>
+                </div>
+                <div class="resumo-dados">
+                    <p><span>Assuntos Selecionados:</span> {{ assuntosSelecionados.join(', ') }}</p>
+                    <p><span>Notas dos Assuntos:</span> {{ notasAssuntos.join(', ') }}</p>
+                    <p><span>Maiores Dificuldades:</span> {{ maioresDificuldades }}</p>
+                </div>
+                <button @click="etapaAtual--">Voltar</button>
+                <button @click="confirmarAgendamento" class="botao-proxima-etapa">Confirmar Agendamento</button>
+            </div>
         </div>
     </div>
 </template>
@@ -162,7 +164,7 @@ export default {
         } else {
             alert('Falha no login. Verifique suas credenciais.');
         }
-        
+
         this.getAreas()
     },
     methods: {
@@ -210,7 +212,7 @@ export default {
             }
 
             //console.log(send);
-            
+
             let schedule = await this.$store.dispatch('scheduleTutoring', send);
             console.log(schedule)
             if (schedule) {
@@ -220,7 +222,7 @@ export default {
             }
         },
         getHorarios() {
-            
+
         },
         selecionarHora(hora){
             this.horaSelecionada = hora
@@ -299,6 +301,21 @@ export default {
     margin-bottom: 10px;
 }
 
+.modal-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #0000007f;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .resumo-dados p span {
     font-weight: bold;
 }
@@ -367,7 +384,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 70%;
+    width: 30%;
+    height: 50%;
     max-width: 800px;
     padding: 20px;
     border-radius: 10px;
@@ -432,6 +450,7 @@ export default {
     margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    text-align: center;
 }
 
 .botao-proxima-etapa {
