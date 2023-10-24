@@ -245,6 +245,10 @@ export default {
                 {
                     nome: 'Matrizes e Determinantes',
                     assuntos: ['Operações com Matrizes', 'Determinantes e Regra de Cramer', 'Matrizes Inversas']
+                },
+                {
+                    nome: 'Trigonometria',
+                    assuntos: ['Funções Trigonométricas', 'Identidades Trigonométricas', 'Trigonometria Esférica']
                 }
             ]
 

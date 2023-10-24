@@ -6,7 +6,7 @@
             <h1>Ensino personalizado do <span>seu jeito</span> e <span>no seu tempo</span>.</h1>
         </div>
         <div class="container-search">
-            <form action="" id="search-form">
+            <form action="" id="search-form" class="form-search">
                         <input name = "search" type="text" class="form-control" id ="search-input" placeholder="Pesquisar professores ou assunto...">
                         <div class="filter-container">
                             <label for="Filtro">Filtrar por </label>
@@ -46,6 +46,10 @@ export default {
         background: var(--primary-50, #F2F6FB);
         height: 25vh;
     }
+    .form-search{
+        display: flex;
+        flex-direction: column;
+    }
     .title h1{
 
         color: var(--primary-600, #002551);
@@ -70,7 +74,7 @@ export default {
         background-color: orangered;
     }
     .filter-container{
-        margin-top: 30px;
+        margin-top: 5%;
     }
     .filter-container label{
         margin-left: 10px;

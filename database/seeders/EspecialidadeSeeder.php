@@ -17,6 +17,7 @@ class EspecialidadeSeeder extends Seeder
             ['descricao' => 'GEOMETRIA', 'ativo' => true],
             ['descricao' => 'ESTATÍSTICA', 'ativo' => true],
             ['descricao' => 'MATRIZES E DETERMINANTES', 'ativo' => true],
+            ['descricao' => 'TRIGONOMETRIA', 'ativo' => true],
         ]);
     }
 }

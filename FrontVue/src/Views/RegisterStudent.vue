@@ -34,6 +34,7 @@
             <input v-model="password" class="input-card" type="password">
           </div>
 
+         <!-- 
           <div class="image-perfil">
             <p class="text-card">Imagem de Perfil</p>
             <button class="button-card-register" @click="openFileInput">
@@ -48,6 +49,7 @@
             </button>
           </div>
           <img class="image-register" :src="photo" alt="">
+        -->
 
           <div class="line-footer"></div>
 
@@ -88,7 +90,7 @@ export default {
       name: '',
       middlename: '',
       email: '',
-      photo: '',
+      photo: 'vazio',
       value: 1,
       tittle: 'vazio',
       bio: 'vazio',
@@ -148,8 +150,8 @@ export default {
         usuario_tipo_id: 2,
         nome: this.name,
         sobrenome: this.middlename,
-        foto_perfil_path: this.photoform,
-        foto_capa_path: this.photoform,
+        foto_perfil_path: this.photo,
+        foto_capa_path: this.photo,
         titulo: this.tittle,
         bio: this.bio,
         curriculo: this.curriculo,

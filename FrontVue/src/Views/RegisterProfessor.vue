@@ -34,7 +34,8 @@
             <p class="text-card">Senha</p>
             <input v-model="password" class="input-card" type="password">
           </div>
-
+          
+          <!--
           <div class="image-perfil">
             <p class="text-card">Imagem de Perfil</p>
             <button class="button-card-register" @click="openFileInput">
@@ -64,6 +65,8 @@
             </button>
           </div>
           <img class="image-register" :src="coverPhoto" alt="">
+
+          -->
 
           <div class="line-footer"></div>
 
@@ -141,6 +144,14 @@
                 class="specialty-item"
                 :class="{ 'selected': selectedSpecialties.MatrizesDeterminantes }"
                 @click="toggleSpecialty('MatrizesDeterminantes')"
+              >
+                Matrizes e Determinantes
+              </button>
+
+              <button
+                class="specialty-item"
+                :class="{ 'selected': selectedSpecialties.estatistica }"
+                @click="toggleSpecialty('estatistica')"
               >
                 Matrizes e Determinantes
               </button>
@@ -461,8 +472,8 @@ export default {
       bio: '',
       curriculo: '',
       password: '',
-      photoform: '',
-      coverPhotoform: '',
+      photoform: 'vazio',
+      coverPhotoform: 'vazio',
       isCheckedMorning: false,
       isCheckedAfternoon: false,
       isCheckedNight: false,
@@ -500,6 +511,7 @@ export default {
         geometria: false,
         trigonometria: false,
         MatrizesDeterminantes: false,
+        estatistica: false,
       },
 
     }
@@ -604,6 +616,7 @@ export default {
         geometria: "GEOMETRIA",
         trigonometria: "TRIGONOMETRIA",
         MatrizesDeterminantes: "MATRIZES E DETERMINANTES",
+        estatistica: "ESTATÍSTICA"
       }
 
       // Criando o novo objeto com base no objeto 'names'
@@ -664,7 +677,6 @@ export default {
         horarioNoite: horarioNoite,
         experiencia: this.selectedStar
       }
-
 
       let result = await this.$store.dispatch('createTutor', send);
       if (result) {

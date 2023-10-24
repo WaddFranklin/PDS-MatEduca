@@ -56,7 +56,6 @@ export default {
     },
 
     updated(){
-        console.log("ok")
         if (this.update) {
             this.dataTutoria()
             this.update = false
