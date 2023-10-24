@@ -4,7 +4,7 @@ services:
     app:
         build:
             context: .
-            dockerfile: PDS-MatEduca/dockerfile
+            dockerfile: PDS-MatEduca/Dockerfile
         volumes:
             - .:/var/www/html
         ports:
@@ -17,10 +17,10 @@ services:
         volumes:
             - db_data:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: mateduca
-            MYSQL_USER: admin
-            MYSQL_PASSWORD: admin
+            MYSQL_ROOT_PASSWORD: your_root_password
+            MYSQL_DATABASE: your_database_name
+            MYSQL_USER: your_user
+            MYSQL_PASSWORD: your_password
 
     web:
         image: php:7.4-apache
