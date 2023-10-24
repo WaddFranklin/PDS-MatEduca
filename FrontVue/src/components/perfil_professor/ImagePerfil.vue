@@ -4,7 +4,7 @@
         <div class="bg-image perfil-professor">
         </div>
         <section class = "box-image-perfil">
-            <img src="../../assets/img/JulianaRibeiro.png" alt="Imagem do professor" class="image-perfil">
+            <img src="../../assets/img/perfil.png" alt="Imagem do professor" class="image-perfil">
         </section>
     </div>
 </template>

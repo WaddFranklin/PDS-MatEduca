@@ -114,7 +114,7 @@ export default {
 
     .imagem-professor{
         width: 100%;
-        background: url("../../assets/img/JulianaRibeiro.png");
+        background: url("../../assets/img/perfil.png");
         background-repeat: no-repeat;
         background-size:100%;
         flex-direction: column;
