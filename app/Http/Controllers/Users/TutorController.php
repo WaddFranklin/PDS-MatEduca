@@ -39,19 +39,21 @@ class TutorController extends Controller
 
             $new_id = $usuario->id;
 
-            $specilidades = Especialidade::all();
-
-            
-            foreach ($specilidades as $specilidade) {
-                foreach ($data['speciality'] as $nome) {
-                    // Verifica se o nome corresponde ao usuário
-                    if ($specilidade["descricao"] === $nome) {
-                        $especialidade_usuario = new UsuarioEspecialidade();
-                        $especialidade_usuario->usuario_id = $usuario["id"];
-                        $especialidade_usuario->especialidade_id = $specilidade["id"];
-                        $especialidade_usuario->ativo = true; 
-                        $especialidade_usuario->save();
-
+            if ($data['usuario_tipo_id'] === 3) {
+                $specilidades = Especialidade::all();
+    
+                
+                foreach ($specilidades as $specilidade) {
+                    foreach ($data['speciality'] as $nome) {
+                        // Verifica se o nome corresponde ao usuário
+                        if ($specilidade["descricao"] === $nome) {
+                            $especialidade_usuario = new UsuarioEspecialidade();
+                            $especialidade_usuario->usuario_id = $usuario["id"];
+                            $especialidade_usuario->especialidade_id = $specilidade["id"];
+                            $especialidade_usuario->ativo = true; 
+                            $especialidade_usuario->save();
+    
+                        }
                     }
                 }
             }
