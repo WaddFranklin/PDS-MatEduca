@@ -1,0 +1,148 @@
+.container-conjunto{
+    display: flex;
+}
+.divider{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px auto;
+}
+.container-search{
+    margin: 0px auto;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+.title{
+
+    width: 1860px;
+    background: var(--primary-50, #F2F6FB);
+    height: 25vh;
+}
+.title h1{
+
+    color: var(--primary-600, #002551);
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    width: 450px;
+    margin: 70px auto;
+
+}
+.title span{
+
+    color: var(--neutral-white, #FFF);
+    font-family: Helvetica Neue;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    background-color: orangered;
+}
+.filter-container label{
+    margin-left: 10px;
+}
+.filter-buttons{
+    margin: 20px 5px;
+    border-radius: 20px;
+    border: 1px solid rgb(208, 203, 203);
+    text-align: center;
+    font-size: 1.09em;
+    background-color: transparent;
+    width: 8%;
+    padding: auto 10px;
+    height: 4vh;
+
+}
+#Assunto{
+    width: 6%;
+}
+#search-input{
+
+    display: flex;
+    width: 65%;
+    height: 7.5vh;
+    padding: 24px;
+    align-items: center;
+    margin: 0px auto;
+    gap: 8px;
+    background: #FFF;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    background-position: 97% center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+/*Parte que estiliza os cards*/
+.cards-professores {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+}
+.container-cards{
+    margin: 0px 300px;
+    display: inline-flex;
+    align-items: flex-start;
+}
+.card-professor{
+
+    word-wrap: break-word;
+    width: 320px;
+    height: 75%;
+    margin-top: 50px;
+    margin-left: 20px;
+    border-radius: 4px;
+    border: 1px solid #E1E1E1;
+
+}
+
+.imagem-professor{
+    width: 100%;
+    background: url("../../img/JulianaRibeiro.jpeg");
+    background-repeat: no-repeat;
+    background-size:100%;
+    flex-direction: column;
+    padding: 104px 0px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+.infopart{
+    background: var(--neutral-white, #FFF);
+}
+.informacao-professor{
+    padding: 10px 10px;
+}
+.informacoes-experience{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+}
+.informacoes-experience label{
+
+    font-weight: 700;
+}
+
+.informacoes-experience ul{
+    list-style: none;
+    align-items: flex-start;
+}
+.informacoes-experience li{
+
+    padding: 5px 0px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background: #FAFAFA;
+}
+.experience{
+    display: flex;
+    flex-direction: column;
+}
+
