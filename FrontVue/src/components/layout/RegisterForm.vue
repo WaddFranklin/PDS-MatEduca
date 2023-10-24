@@ -29,7 +29,7 @@
           </div>
         </button>
 
-        <button class="card-base" @click="{{ this.$router.push('/registroAluno'); }}">
+        <button class="card-base" @click="{{ this.$router.push('/registroDoAluno'); }}">
           <div class="frame-150">
             <i class="bi bi-person"></i>
           </div>
