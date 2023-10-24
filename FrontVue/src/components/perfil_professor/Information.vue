@@ -1,7 +1,7 @@
 <template>
   <section class="more-informations">
     <Resumo/>
-    <Review/>
+
   </section>
 </template>
 
